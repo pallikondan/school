@@ -1,7 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
+import './fonts/Poppins-Regular.ttf';
+import './fonts/Poppins-Bold.ttf';
+import './fonts/Poppins-Italic.ttf';
+import './fonts/Poppins-Medium.ttf';
+import './fonts/Poppins-SemiBold.ttf';
+import './fonts/Poppins-ThinItalic.ttf';
+
+
+
+
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

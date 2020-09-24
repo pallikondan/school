@@ -1,0 +1,22 @@
+export const reducerTypes = {
+    routes: {
+
+    },
+    login:{
+
+        LOGIN: 'LOGIN',
+        LOGIN_PENDING: 'LOGIN_PENDING',
+        LOGIN_SUCCESS: 'LOGIN_SUCCESS',
+        LOGIN_ERROR: 'LOGIN_ERROR',
+
+        SET_ACCESSTOKEN: 'SET_ACCESSTOKEN',
+        GET_ACCESSTOKEN:'GET_ACCESSTOKEN',
+        DELETE_ACCESSTOKEN:'DELETE_ACCESSTOKEN',
+        UNAUTHOURIZED: 'UNAUTHOURIZED',
+
+        LOGOUT: 'LOGOUT',
+        LOGOUT_PENDING: 'LOGOUT_PENDING',
+        LOGOUT_SUCCESS: 'LOGOUT_SUCCESS',
+        LOGOUT_ERROR: 'LOGOUT_ERROR'
+    }
+}
