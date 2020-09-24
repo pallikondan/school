@@ -22,7 +22,6 @@ const MainLayout = (props) => {
                                 <TopNavBar/>
                             </Col>
                         </Row>
-
                         <Row className={'mar_pad_0'}>
                             <Col className={'mar_pad_0'}>
                                 <div>
@@ -34,7 +33,6 @@ const MainLayout = (props) => {
                 </Row>
             </Container>
         </Fragment>
-
     );
 };
 
