@@ -7,7 +7,7 @@ const TopBreadCrumb = (props) => {
     return (
         <Fragment>
             <Navbar style={{background:"#dee6f1"}} className="justify-content-between">
-                <Navbar.Brand href={props.bread.children.props.location.pathname}>
+                <Navbar.Brand href={'#'}>
                     <img
                         alt=""
                         src="/logo.svg"
@@ -15,7 +15,7 @@ const TopBreadCrumb = (props) => {
                         height="20"
                         className="d-inline-block align-top"
                     />{' '}
-                    {<span style={{fontSize:"16px"}}>{props.bread.children.props.location.pathname.slice(1)}</span>}
+                    {<span style={{fontSize:"16px"}}>{'Schools List'}</span>}
                 </Navbar.Brand>
 
 

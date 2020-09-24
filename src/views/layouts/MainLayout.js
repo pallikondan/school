@@ -2,7 +2,7 @@ import React, {Fragment} from "react";
 import {Container, Row, Col} from "react-bootstrap";
 import SideMenu from "../partials/sideMenu";
 import TopNavBar from "../partials/navBar";
-import TopBreadCrumb from "../partials/breadcrumb";
+
 const MainLayout = (props) => {
     return (
         <Fragment>
@@ -22,14 +22,10 @@ const MainLayout = (props) => {
                                 <TopNavBar/>
                             </Col>
                         </Row>
+
                         <Row className={'mar_pad_0'}>
                             <Col className={'mar_pad_0'}>
-                               <TopBreadCrumb bread={props}/>
-                            </Col>
-                        </Row>
-                        <Row className={'mar_pad_0'}>
-                            <Col className={'mar_pad_0'}>
-                                <div style={{padding:"20px"}}>
+                                <div>
                                     {props.children}
                                 </div>
                             </Col>
