@@ -24,6 +24,10 @@ body {
 .font-sub-heading{
     font-size: 18px;
 }
+.font-size-regular{
+    font-size: 16px;
+}
+
 .font-small{
     font-size: 12px;
 }
