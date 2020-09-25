@@ -1,18 +1,22 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Row, Col, Button} from 'react-bootstrap';
 import loginThumbnail from '../../../assets/login_vector_ic.png'
 import TextField from '@material-ui/core/TextField';
 
-class loginPage extends Component {
 
-    goToDashboardPage = () => {
-        const location = {
-            pathname: 'listschool',
-        };
-        this.props.history.push(location)
+
+const goToDashboardPage = (history) => {
+    const location = {
+        pathname: 'listschool',
     };
+    history.push(location)
+};
 
-    render() {
+
+
+const loginPage = (props) => {
+
+
         return (
             <React.Fragment>
                 <Col style={{background: "#35a8fc", height: "100vh", padding: "5% 1%"}}>
@@ -43,7 +47,7 @@ class loginPage extends Component {
                                         <a href="#" className={'font-regular font-gray font-small'}>Forgot Password?</a>
                                     </div>
                                     <div className={'mar_top_5'}>
-                                        <Button onClick={this.goToDashboardPage} className={'font-medium font-small'}
+                                        <Button onClick={()=>{goToDashboardPage(props.history)}} className={'font-medium font-small'}
                                                 style={{background: '#3fabf6', border: 0}} size="lg"
                                                 block> Login</Button>
                                     </div>
@@ -55,7 +59,7 @@ class loginPage extends Component {
             </React.Fragment>
         );
     }
-}
+
 
 
 export default loginPage

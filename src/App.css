@@ -29,6 +29,10 @@ body {
 }
 
 .font-small{
+    font-size: 14px;
+}
+
+.font-extra-small{
     font-size: 12px;
 }
 
@@ -69,9 +73,25 @@ body {
 .mar_top_5px{
     margin-top: 5px;
 }
-.pad_5{
-    padding: 0;
+.pad_2{
+    padding: 2%;
 }
 .mar_top_5{
     margin-top: 5%;
+}
+
+
+div.modal-content{
+    border-radius: 15px;
+}
+
+
+.modal-dotted{
+    border-top: 1px dashed #cccccc;
+}
+
+
+.modal-footer{
+    float:right;
+    border: none;
 }
