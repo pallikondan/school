@@ -29,6 +29,10 @@ body {
 }
 
 .font-small{
+    font-size: 14px;
+}
+
+.font-extra-small{
     font-size: 12px;
 }
 
