@@ -1,0 +1,13 @@
+.circle {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    font-size: 20px;
+    text-align: center;
+    background: #fff;
+    color: rgb(53, 168, 252);
+    position: relative;
+    top: 33%;
+    left: 33%;
+}

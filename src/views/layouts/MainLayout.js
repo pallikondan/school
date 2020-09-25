@@ -2,6 +2,7 @@ import React, {Fragment} from "react";
 import {Container, Row, Col} from "react-bootstrap";
 import SideMenu from "../partials/sideMenu";
 import TopNavBar from "../partials/navBar";
+import './layout.css';
 
 const MainLayout = (props) => {
     return (
@@ -9,8 +10,8 @@ const MainLayout = (props) => {
             <Container className={'mar_pad_0'} fluid>
                 <Row className={'mar_pad_0'}>
                     <Col style={{boxShadow:"10px 0 5px -11px #aaa"}} className={'mar_pad_0'} xs={12} sm={3} xl={3} md={3} lg={3}>
-                        <div style={{background: "#35a8fc", height: "25vh", verticalAlign: "center"}}>
-                            <p>{"Logo"}</p>
+                        <div style={{background: "#35a8fc", height: "25vh"}}>
+                        <div class="circle">Logo</div>
                         </div>
                         <div style={{background: "#ffffff", height: "75vh"}}>
                             <SideMenu/>
