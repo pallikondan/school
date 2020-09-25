@@ -1,5 +1,5 @@
-import React, {Fragment,useState} from "react";
-import {Button, Modal,Container,Row,Col,FormControl,Form} from 'react-bootstrap'
+import React, { useState} from "react";
+import {Button, Modal, Container, Row, Col, Form} from 'react-bootstrap'
 
 
 function registerSchool() {
@@ -12,21 +12,21 @@ function registerSchool() {
         <>
 
             <Modal show={show} size={'xl'} centered dialogClassName='modal-dialog' onHide={handleClose}>
-                <Modal.Header bsPrefix={'pad_2'} >
-                    <Modal.Title bsPrefix={'font-small font-medium'} >Register New School</Modal.Title>
+                <Modal.Header bsPrefix={'pad_2'}>
+                    <Modal.Title bsPrefix={'font-small font-medium'}>Register New School</Modal.Title>
                     <hr className={'modal-dotted'}/>
                 </Modal.Header>
-                <Modal.Body >
+                <Modal.Body>
                     <Container>
                         <Row>
                             <Col>
                                 <Form>
-                                    <Form.Group as={Row} >
+                                    <Form.Group as={Row}>
                                         <Form.Label bsPrefix={'font-small'} column sm="4">
                                             School Name
                                         </Form.Label>
                                         <Col sm="8">
-                                            <Form.Control type="text"  required/>
+                                            <Form.Control type="text" required/>
                                             <Form.Control.Feedback type="invalid">
                                                 Please provide a school Name.
                                             </Form.Control.Feedback>
@@ -38,7 +38,7 @@ function registerSchool() {
                                             Location [City]
                                         </Form.Label>
                                         <Col sm="8">
-                                            <Form.Control type="text"  />
+                                            <Form.Control type="text"/>
                                             <Form.Control.Feedback type="invalid">
                                                 Please provide a location.
                                             </Form.Control.Feedback>
@@ -46,24 +46,24 @@ function registerSchool() {
                                     </Form.Group>
                                     <Form.Group as={Row}>
 
-                                    <Form.Label bsPrefix={'font-small'} column sm="4">
-                                        Admin Username
-                                    </Form.Label>
-                                    <Col sm="8">
-                                        <Form.Control type="text"  />
-                                        <Form.Control.Feedback type="invalid">
-                                            Please provide a admin username.
-                                        </Form.Control.Feedback>
-                                    </Col>
+                                        <Form.Label bsPrefix={'font-small'} column sm="4">
+                                            Admin Username
+                                        </Form.Label>
+                                        <Col sm="8">
+                                            <Form.Control type="text"/>
+                                            <Form.Control.Feedback type="invalid">
+                                                Please provide a admin username.
+                                            </Form.Control.Feedback>
+                                        </Col>
                                     </Form.Group>
 
                                     <Form.Group as={Row}>
 
                                         <Form.Label bsPrefix={'font-small'} column sm="4">
-                                           School Logo
+                                            School Logo
                                         </Form.Label>
                                         <Col sm="8">
-                                            <Form.Control type="file"  />
+                                            <Form.Control type="file"/>
                                         </Col>
                                     </Form.Group>
 
@@ -72,12 +72,12 @@ function registerSchool() {
                             </Col>
                             <Col>
                                 <Form>
-                                    <Form.Group as={Row} >
+                                    <Form.Group as={Row}>
                                         <Form.Label bsPrefix={'font-small'} column sm="4">
                                             Address
                                         </Form.Label>
                                         <Col sm="8">
-                                            <Form.Control type="text"  />
+                                            <Form.Control type="text"/>
                                             <Form.Control.Feedback type="invalid">
                                                 Please provide address.
                                             </Form.Control.Feedback>
@@ -89,7 +89,7 @@ function registerSchool() {
                                             Contact Number
                                         </Form.Label>
                                         <Col sm="8">
-                                            <Form.Control type="phone"  />
+                                            <Form.Control type="phone"/>
                                             <Form.Control.Feedback type="invalid">
                                                 Please provide 10 digit contact number.
                                             </Form.Control.Feedback>
@@ -100,7 +100,7 @@ function registerSchool() {
                                             School Email
                                         </Form.Label>
                                         <Col sm="8">
-                                            <Form.Control type="email"  />
+                                            <Form.Control type="email"/>
                                         </Col>
                                     </Form.Group>
                                 </Form>
@@ -110,15 +110,15 @@ function registerSchool() {
                         <Row>
                             <Col>
                                 <hr className={'modal-dotted'}/>
-<p>OR</p>
+                                <p>OR</p>
 
                                 <Form.Group as={Row}>
                                     <Form.Label bsPrefix={'font-small'} column sm="4">
                                         Upload Bulk file
                                     </Form.Label>
                                     <Col sm="8">
-                                        <Form.Control type="file"  />
-<span> maximum file size limit - 10 MB</span>
+                                        <Form.Control type="file"/>
+                                        <span> maximum file size limit - 10 MB</span>
                                         <Form.Control.Feedback type="invalid">
                                             Please upload bulk file.
                                         </Form.Control.Feedback>
@@ -136,11 +136,12 @@ function registerSchool() {
                 </Modal.Body>
                 <Modal.Footer bsPrefix>
                     <div className={'modal-footer'}>
-                        <Button style={{border:"1px solid gray"}} className={'font-black font-extra-small'} variant="outline" onClick={handleClose}>
+                        <Button style={{border: "1px solid gray"}} className={'font-black font-extra-small'}
+                                variant="outline" onClick={handleClose}>
                             Cancel
                         </Button>
-                        <Button  className={'font-extra-small btn-blue'} onClick={handleClose}>
-                           Register
+                        <Button className={'font-extra-small btn-blue'} onClick={handleClose}>
+                            Register
                         </Button>
                     </div>
 
