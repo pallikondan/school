@@ -108,9 +108,7 @@ function registerSchool() {
                                         </Form.Label>
                                         <Col sm="8">
                                             {logo ? <img height={50} src={imageLogo} alt={'logo'}/> : ""}
-                                            <Form.Control style={{display: 'none'}}
-                                                          onChange={onChangeImageFile.bind(this)} ref={imageUploadRef}
-                                                          type="file"/>
+                                            <input accept="image/png, image/jpeg, image/jpg"  style={{display: 'none'}} onChange={onChangeImageFile.bind(this)} ref={imageUploadRef} type="file"/>
                                             <Button size="xs" className={'font-small'} style={{
                                                 background: '#6cc04c',
                                                 border: "none",
@@ -195,7 +193,7 @@ function registerSchool() {
                                     </Col>
                                     <Col>
                                         <Form.Group as={Row}>
-                                            <Form.Control style={{display: 'none'}} onChange={onChangeFile.bind(this)}
+                                            <input  style={{display: 'none'}} onChange={onChangeFile.bind(this)}
                                                           ref={fileUploadRef} type="file"/>
                                             <p style={{fontWeight: 'bold', lineHeight: 3}}
                                                className={'font-italic font-extra-small font-gray'}> Maximum file size
