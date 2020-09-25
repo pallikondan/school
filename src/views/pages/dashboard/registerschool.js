@@ -1,12 +1,56 @@
-import React, { useState} from "react";
+import React, {useState, useRef} from "react";
 import {Button, Modal, Container, Row, Col, Form} from 'react-bootstrap'
-
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import IconButton from "@material-ui/core/IconButton";
 
 function registerSchool() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [show, setShow] = useState(true);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [logo, setLogo] = useState('');
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [imageLogo, setImageLogo] = useState('');
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [bulkFile, setbulkFile] = useState('');
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const imageUploadRef = useRef(null);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const fileUploadRef = useRef(null);
+
+    const handleImageBtnClick = () => {
+        /*Collecting node-element and performing click*/
+        imageUploadRef.current.click();
+    };
+    const handleFileBtnClick = () => {
+        /*Collecting node-element and performing click*/
+        fileUploadRef.current.click();
+    };
+    const onChangeImageFile = (event) => {
+        event.stopPropagation();
+        event.preventDefault();
+        let file = event.target.files[0];
+        setLogo(file);
+        if (file) {
+            const blob = file.slice(0, file.size);
+            if (blob.size) {
+                const url = URL.createObjectURL(blob);
+                file.preview = url;
+                setImageLogo(url)
+            }
+        }
+    };
+
+    const onChangeFile = (event) => {
+        event.stopPropagation();
+        event.preventDefault();
+        let file = event.target.files[0];
+        setbulkFile(file);
+        console.log(file);
+
+    };
 
     return (
         <>
@@ -63,8 +107,18 @@ function registerSchool() {
                                             School Logo
                                         </Form.Label>
                                         <Col sm="8">
-                                            <Form.Control type="file"/>
+                                            {logo ? <img height={50} src={imageLogo} alt={'logo'}/> : ""}
+                                            <Form.Control style={{display: 'none'}}
+                                                          onChange={onChangeImageFile.bind(this)} ref={imageUploadRef}
+                                                          type="file"/>
+                                            <Button size="xs" className={'font-small'} style={{
+                                                background: '#6cc04c',
+                                                border: "none",
+                                                marginLeft: "20px",
+                                                borderRadius: "10px"
+                                            }} onClick={handleImageBtnClick}> {'+ Choose File'}</Button>
                                         </Col>
+
                                     </Form.Group>
 
 
@@ -111,21 +165,51 @@ function registerSchool() {
                             <Col>
                                 <hr className={'modal-dotted'}/>
                                 <p>OR</p>
+                                <p>Upload Bulk file</p>
+                                <Row>
+                                    <Col>
+                                        <div style={{
+                                            boxShadow: '3px 3px 15px #cccccc',
+                                            borderRadius: "10px",
+                                            border: "1px solid #eee",
+                                            height: '35px',
+                                            paddingLeft: '10px'
+                                        }}>
+                                            <span className={'font-small'}>{bulkFile.name}</span>
+                                            {bulkFile ?
+                                                <IconButton onClick={() => {
+                                                    setbulkFile('')
+                                                }} disableRipple={true} size={'small'} aria-label="delete">
+                                                    <HighlightOffIcon/>
+                                                </IconButton>
+                                                : ""}
+                                            <Button size="xs" className={'font-small'} style={{
+                                                background: '#6cc04c',
+                                                border: "none",
+                                                marginLeft: "20px",
+                                                borderRadius: "10px",
+                                                float: 'right'
+                                            }} onClick={handleFileBtnClick}> {'upload'}</Button>
 
-                                <Form.Group as={Row}>
-                                    <Form.Label bsPrefix={'font-small'} column sm="4">
-                                        Upload Bulk file
-                                    </Form.Label>
-                                    <Col sm="8">
-                                        <Form.Control type="file"/>
-                                        <span> maximum file size limit - 10 MB</span>
-                                        <Form.Control.Feedback type="invalid">
-                                            Please upload bulk file.
-                                        </Form.Control.Feedback>
+                                        </div>
                                     </Col>
-                                </Form.Group>
+                                    <Col>
+                                        <Form.Group as={Row}>
+                                            <Form.Control style={{display: 'none'}} onChange={onChangeFile.bind(this)}
+                                                          ref={fileUploadRef} type="file"/>
+                                            <p style={{fontWeight: 'bold', lineHeight: 3}}
+                                               className={'font-italic font-extra-small font-gray'}> Maximum file size
+                                                limit - 10 MB</p>
+                                            <Form.Control.Feedback type="invalid">
+                                                Please upload bulk file.
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Col>
+                                </Row>
+
 
                             </Col>
+
                         </Row>
                         <Row>
                             <Col>
