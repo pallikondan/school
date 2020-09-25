@@ -14,7 +14,7 @@ const goToDashboardPage = (history) => {
 
 
 
-const loginPage = (props) => {
+const LoginPage = (props) => {
 
 
         return (
@@ -62,4 +62,4 @@ const loginPage = (props) => {
 
 
 
-export default loginPage
+export default LoginPage

@@ -37,7 +37,8 @@ export const ActionsIcons = () => {
 
 
 
-const dashboardPage = (props) => {
+const DashboardPage = (props) => {
+
     const fields = [
         { key: 'school_name', columnName: 'School Name', type: 'school_name', form: false, required: false, visible: true, value: true },
         { key: 'address', columnName: 'Address', type: 'address', form: false, required: false, visible: true, value: true },
@@ -117,4 +118,4 @@ const dashboardPage = (props) => {
 }
 
 
-export default dashboardPage
+export default DashboardPage;

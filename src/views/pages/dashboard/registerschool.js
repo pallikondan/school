@@ -3,22 +3,20 @@ import {Button, Modal, Container, Row, Col, Form} from 'react-bootstrap'
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import IconButton from "@material-ui/core/IconButton";
 
-function registerSchool() {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [show, setShow] = useState(true);
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [logo, setLogo] = useState('');
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [imageLogo, setImageLogo] = useState('');
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [bulkFile, setbulkFile] = useState('');
+const  RegisterSchool = () => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+
+    const [show, setShow] = useState(true);
+    const [logo, setLogo] = useState('');
+    const [imageLogo, setImageLogo] = useState('');
+    const [bulkFile, setbulkFile] = useState('');
     const imageUploadRef = useRef(null);
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const fileUploadRef = useRef(null);
+
+
+
 
     const handleImageBtnClick = () => {
         /*Collecting node-element and performing click*/
@@ -233,4 +231,4 @@ function registerSchool() {
     );
 }
 
-export default registerSchool
+export default RegisterSchool

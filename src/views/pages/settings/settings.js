@@ -1,7 +1,7 @@
 import React, {Fragment} from "react";
 
 
-const settings = (props) => {
+const Settings = (props) => {
     return (
         <Fragment>
             <p>Settings Page</p>
@@ -11,4 +11,4 @@ const settings = (props) => {
 }
 
 
-export default settings
+export default Settings

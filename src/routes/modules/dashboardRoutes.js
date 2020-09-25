@@ -1,5 +1,5 @@
 import dashboardPage from "../../views/pages/dashboard/dashboard";
-import registerSchool from "../../views/pages/dashboard/registerschool";
+import RegisterSchool from "../../views/pages/dashboard/registerschool";
 import settings from "../../views/pages/settings/settings";
 
 
@@ -15,7 +15,7 @@ export const defaultRoute = '/listschool',
         {
             path: `/register`,
             name: 'Register New School',
-            component: registerSchool,
+            component: RegisterSchool,
             exact: true,
         },
         {
