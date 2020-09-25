@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie'
 
 const TokenKey = 'Access-Token';
-const sampleToken = "123"
+const sampleToken = "123";
 
 export function getAuthToken() {
 

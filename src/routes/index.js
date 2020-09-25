@@ -69,6 +69,12 @@ const  AllRoutes = (props) => {
                 )
             }} />
 
+            <Route exact={true} path="/"  render={props => {
+                return (
+                    <Route render={() => <Redirect to='/login' />} />
+                )
+            }} />
+
             {!auth ?
                 <Route render={() => <Redirect to={defaultRoute.redirect} />} />
                 :
