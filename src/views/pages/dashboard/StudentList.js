@@ -114,8 +114,8 @@ function EnhancedTableHead(props) {
 
   return (
     <TableHead className={classes.tableHead}>
-      <TableRow>
-        {
+      <TableRow className={classes.tableRow}>
+        {/* {
           props.showSelectAll ? (
             <TableCell padding="checkbox">
               <Checkbox
@@ -133,7 +133,7 @@ function EnhancedTableHead(props) {
               />
             </TableCell>
           ) : <TableCell colSpan={1} />
-        }
+        } */}
         {(fields.filter(x => x.visible)).map(headCell => (
           <TableCell
             key={headCell.key}
@@ -200,6 +200,9 @@ const useStyles = makeStyles(theme => ({
   tableHead: {
     backgroundColor: '#ECF0F1',
   },
+  tableRow: {
+    backgroundColor: '#e2e2ea'
+  },
   headCell: {
     fontWeight: 'bold',
     fontSize: '12px'
@@ -213,7 +216,9 @@ const useStyles = makeStyles(theme => ({
     }
   },
   tableCell: {
-    fontSize: '12px',
+    fontSize: '16px',
+    fontFamily:'poppins (regular)',
+    color:'#676767'
   },
   selected: {}
 }));
@@ -326,12 +331,11 @@ const StudentLists = ({ fields = [], data = [], initialSort = "", searchQuery = 
                       aria-checked={isItemSelected}
                       tabIndex={-1}
                       key={record.id}
-                      classes={{ selected: classes.selected }}
-                      className={classes.tableRowSelected}
+                      className={classes.tableRowSelected, classes.tableRow}
                       selected={isItemSelected}
                       style={{ height: 53 }}
                     >
-                      <TableCell padding="checkbox">
+                      {/* <TableCell padding="checkbox">
                         <Checkbox
                           color="primary"
                           style={{ visibility: sensorTable && 'hidden' }}
@@ -339,7 +343,7 @@ const StudentLists = ({ fields = [], data = [], initialSort = "", searchQuery = 
                           checked={isItemSelected}
                           inputProps={{ 'aria-labelledby': labelId }}
                         />
-                      </TableCell>
+                      </TableCell> */}
                       {
                         (fields.filter(x => x.visible)).map(field => (
                           <TableCell key={field.key} className={classes.tableCell} padding={field.padding? "checkbox": "default"} align="left">

@@ -2,6 +2,7 @@ import React from 'react';
 import {Row, Col, Button} from 'react-bootstrap';
 import loginThumbnail from '../../../assets/login_vector_ic.png'
 import TextField from '@material-ui/core/TextField';
+import './login.css'
 
 
 
@@ -32,7 +33,7 @@ const LoginPage = (props) => {
                         <Row>
                             <Col style={{textAlign: "center"}}>
                                 <div style={{width: "50%", margin: "auto", marginTop: "40%"}}>
-                                    <p>{"Logo"}</p>
+                                <div class="circle">Logo</div>
                                     <div className={'mar_top_5'}>
                                         <span className={'font-medium font-black font-sub-headding'}>Log in to your account.</span>
                                     </div>
