@@ -6,7 +6,8 @@ import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Edit, Delete } from '@material-ui/icons';
 import classNames from 'classnames';
-
+import DeleteModal from './delete'
+import EditModal from './editrecord'
 // const styles = makeStyles(theme => ({
 //     deleteButton: {
 //         borderColor: theme.palette.danger.main,
@@ -28,9 +29,9 @@ export const DeleteButton = ({ className, size, ...props }) => {
 
 export const ActionsIcons = () => {
     return(
-        <div>
-            <EditButton className="mr-3" label="Edit"></EditButton>
-            <DeleteButton className="mr-3" label="Delete"></DeleteButton>
+        <div style={{display: "flex"}}>
+            <EditModal></EditModal>
+            <DeleteModal></DeleteModal>
         </div>
     )
 }
