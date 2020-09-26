@@ -8,7 +8,7 @@ import PowerSettingsNewOutlinedIcon from '@material-ui/icons/PowerSettingsNewOut
 const TopNavBar = (props) => {
     return (
         <Fragment>
-            <div style={{height: "5vh", display: "flex", flexDirection: "row-reverse"}}>
+            <div style={{display: "flex", flexDirection: "row-reverse"}}>
                 <ul style={{listStyleType: "none", padding: 0, margin: 0}}>
                     <li style={{display: "inline",borderLeft:"1px solid gray", borderRight:"1px solid gray",borderCollapse:"collapse"}}>
                         <IconButton aria-label="delete">
