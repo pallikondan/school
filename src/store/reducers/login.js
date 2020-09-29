@@ -1,19 +1,20 @@
 import { reducerTypes } from '../constants/index'
 import {getAuthToken,setAuthToken,removeAuthToken} from '../../utils/Auth'
+import inititalState from '../initialState'
 
 let accessToken = getAuthToken();
 
-const inititalState = {
-    login: {
-        success: false,
-        error: false,
-        pending: false,
-    },
-    accessToken,
-    profile: {}
-},
+// const inititalState = {
+//     login: {
+//         success: false,
+//         error: false,
+//         pending: false,
+//     },
+//     accessToken,
+//     profile: {}
+// },
 
- { login } = reducerTypes,
+ const { login } = reducerTypes,
 
  Login = (state = inititalState, action) => {
 

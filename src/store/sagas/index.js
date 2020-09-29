@@ -1,13 +1,13 @@
-import { all } from 'redux-saga/effects'
-import {loginWatcher} from './login'
+import { all, fork } from 'redux-saga/effects'
+import {authWatcher} from './login';
+import {schoolWatcher} from './schoolList'
 
 
 
 
-export default function *rootSaga() {
-
-    yield all([
-        loginWatcher(),
-    ])
-
+function *rootSaga() {
+    yield fork(authWatcher);
+    yield fork(schoolWatcher)
 }
+
+export default rootSaga

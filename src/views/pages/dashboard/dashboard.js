@@ -1,4 +1,4 @@
-import React, { Fragment} from 'react';
+import React, { Fragment, Component} from 'react';
 import {Col, Row} from "react-bootstrap";
 import TopBreadCrumb from "../../partials/breadcrumb";
 import StudentLists from './StudentList';
@@ -7,7 +7,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Edit, Delete } from '@material-ui/icons';
 import classNames from 'classnames';
 import DeleteModal from './delete'
-import EditModal from './editrecord'
+import EditModal from './editrecord';
+import {getSchoolListRequest} from '../../../store/actions/schoolList'
+import {connect } from 'react-redux';
 // const styles = makeStyles(theme => ({
 //     deleteButton: {
 //         borderColor: theme.palette.danger.main,
@@ -38,8 +40,14 @@ export const ActionsIcons = () => {
 
 
 
-const DashboardPage = (props) => {
+class DashboardPage extends Component {
+    componentDidMount() {
+        this.props.getSchoolListRequest()
+    }
+    
 
+    render() {
+        const {props} = this
     const fields = [
         { key: 'school_name', columnName: 'School Name', type: 'school_name', form: false, required: false, visible: true, value: true },
         { key: 'address', columnName: 'Address', type: 'address', form: false, required: false, visible: true, value: true },
@@ -117,6 +125,7 @@ const DashboardPage = (props) => {
 
     )
 }
+}
 
 
-export default DashboardPage;
+export default connect(null, {getSchoolListRequest})(DashboardPage);

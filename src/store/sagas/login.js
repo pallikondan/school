@@ -45,7 +45,7 @@ function *loginSaga(action) {
 
 
 
-export function *loginWatcher() {
+export function *authWatcher() {
 
     yield takeLatest(
         login.LOGIN,
