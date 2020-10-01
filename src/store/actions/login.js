@@ -10,8 +10,9 @@ export const loginToApp = (data) => ({
     payload: data
 })
 
-export const loginPending = () => ({
+export const loginPending = (data) => ({
     type: login.LOGIN_PENDING,
+    payload:data
 })
 
 export const loginSuccess = (data) => ({
@@ -19,8 +20,10 @@ export const loginSuccess = (data) => ({
     payload: data
 })
 
-export const loginError = () => ({
-    type: login.LOGIN_ERROR
+export const loginError = (data) => ({
+    type: login.LOGIN_ERROR,
+    payload: data
+
 })
 
 export const logout = () => ({

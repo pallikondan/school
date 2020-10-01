@@ -1,10 +1,10 @@
-import { call, put, takeLatest } from 'redux-saga/effects'
-
- import {  loginAPI } from '../../api/login'
+import { call,put, takeLatest } from 'redux-saga/effects'
+import {loginPending,loginSuccess,loginError} from "../actions/login";
+import {setAuthToken} from '../../utils/Auth'
+import {loginAPI} from "../services";
 import { reducerTypes } from '../constants'
 
 
-import { loginError, loginPending, loginSuccess, setAccessToken } from '../actions/login'
 
 
 const { login } = reducerTypes;
@@ -13,31 +13,28 @@ const { login } = reducerTypes;
 
 function *loginSaga(action) {
 
+
     try {
 
-        yield put(loginPending(true))
+        yield put(loginPending(true));
         const res = yield call(
             loginAPI,
             action.payload
-        )
+        );
 
-        if (res.success) {
-            yield put(setAccessToken(res.data.token))
-            yield put(loginSuccess(res.data))
-
-        } else {
-
-            yield put(loginError())
-
+        if(res){
+            yield put(loginSuccess(res));
+            yield setAuthToken(res.token);
+            yield put(loginPending(false));
+            yield put(loginError(false))
+        }else{
+            yield put(loginError(true));
+            yield put(loginPending(false))
         }
 
-        yield put(loginPending(false))
-
     } catch (error) {
-        console.log(error)
-        yield put(loginError())
+        yield put(loginError(true));
         yield put(loginPending(false))
-
     }
 
 }

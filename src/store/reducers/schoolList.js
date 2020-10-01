@@ -12,6 +12,9 @@ function school(state = initialState, action) {
             schoolListLoading: true
         };
       case schoolList.GET_SCHOOL_LIST_SUCCESS:
+          console.log(" saga called 4 ")
+
+
           return {
               ...state,
               schoolListLoading: false,

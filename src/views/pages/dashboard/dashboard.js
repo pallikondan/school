@@ -3,23 +3,12 @@ import {Col, Row} from "react-bootstrap";
 import TopBreadCrumb from "../../partials/breadcrumb";
 import StudentLists from './StudentList';
 import { Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import { Edit, Delete } from '@material-ui/icons';
 import classNames from 'classnames';
 import DeleteModal from './delete'
 import EditModal from './editrecord';
 import {getSchoolListRequest} from '../../../store/actions/schoolList'
 import {connect } from 'react-redux';
-// const styles = makeStyles(theme => ({
-//     deleteButton: {
-//         borderColor: theme.palette.danger.main,
-//         color: theme.palette.danger.main,
-//         "&:hover": {
-//             // background: theme.palette.danger.main,
-//             // color: "#fff",
-//         }
-//     }
-// }));
 
 export const EditButton = ({ className, size, ...props }) => {
     return <Button style={{minWidth: 100}} className={classNames(className)} size={size || "small"} color="primary" variant="outlined" {...props}><Edit className="mr-1" fontSize="small" /> {props.label || "Button"}</Button>

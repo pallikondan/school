@@ -11,7 +11,7 @@ const MainLayout = (props) => {
                 <Row className={'mar_pad_0'}>
                     <Col style={{boxShadow:"10px 0 5px -11px #aaa"}} className={'mar_pad_0'} xs={12} sm={3} xl={3} md={3} lg={3}>
                         <div style={{background: "#35a8fc", height: "25vh"}}>
-                        <div class="circle">Logo</div>
+                        <div className="circle">Logo</div>
                         </div>
                         <div style={{background: "#ffffff", height: "75vh"}}>
                             <SideMenu/>

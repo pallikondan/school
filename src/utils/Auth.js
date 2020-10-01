@@ -1,7 +1,6 @@
 import Cookies from 'js-cookie'
 
 const TokenKey = 'Access-Token';
-const sampleToken = "123";
 
 export function getAuthToken() {
 
@@ -9,7 +8,7 @@ export function getAuthToken() {
 
 }
 
-export function setAuthToken(token  = sampleToken ) {
+export function setAuthToken(token  ) {
 
   return Cookies.set(
     TokenKey,
@@ -20,7 +19,7 @@ export function setAuthToken(token  = sampleToken ) {
 
 export function removeAuthToken() {
 
-  return Cookies.remove()
+  return Cookies.remove(TokenKey)
 
 }
 

@@ -4,8 +4,17 @@ import Badge from '@material-ui/core/Badge';
 import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 import PowerSettingsNewOutlinedIcon from '@material-ui/icons/PowerSettingsNewOutlined';
+import { useHistory } from "react-router-dom";
+import {removeAuthToken} from "../../utils/Auth";
 
+const logout = (history) =>{
+    removeAuthToken();
+    history.push("login");
+
+};
 const TopNavBar = (props) => {
+    let history = useHistory();
+
     return (
         <Fragment>
             <div style={{display: "flex", flexDirection: "row-reverse"}}>
@@ -24,7 +33,7 @@ const TopNavBar = (props) => {
                         </IconButton>
                     </li>
                     <li style={{display: "inline",borderLeft:"1px solid gray", borderRight:"1px solid gray",borderCollapse:"collapse"}}>
-                        <IconButton aria-label="delete">
+                        <IconButton onClick={()=>logout(history)} aria-label="delete">
                             <PowerSettingsNewOutlinedIcon />
                         </IconButton>
                     </li>

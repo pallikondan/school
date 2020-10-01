@@ -1,18 +1,7 @@
 import { reducerTypes } from '../constants/index'
-import {getAuthToken,setAuthToken,removeAuthToken} from '../../utils/Auth'
 import inititalState from '../initialState'
 
-let accessToken = getAuthToken();
 
-// const inititalState = {
-//     login: {
-//         success: false,
-//         error: false,
-//         pending: false,
-//     },
-//     accessToken,
-//     profile: {}
-// },
 
  const { login } = reducerTypes,
 
@@ -21,7 +10,7 @@ let accessToken = getAuthToken();
     switch (action.type) {
 
         case login.LOGIN:
-            return true;
+            return state;
         case login.LOGIN_PENDING:
             return state = {
                 ...state,
@@ -36,6 +25,7 @@ let accessToken = getAuthToken();
                 login: {
                     ...state.login,
                     success: true,
+                    isAuthorized: true
                 }
             };
         case login.LOGIN_ERROR:
@@ -45,17 +35,6 @@ let accessToken = getAuthToken();
                     ...state.login,
                     error: action.payload
                 }
-            };
-        case login.SET_ACCESSTOKEN:
-            setAuthToken(action.payload);
-            return state = {
-                accessToken: action.payload
-            };
-        case login.LOGOUT:
-        case login.UNAUTHOURIZED:
-            removeAuthToken();
-            return state = {
-                accessToken: null
             };
         default:
             return state

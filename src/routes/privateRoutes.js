@@ -4,7 +4,7 @@ import dashboardRouter from "./modules/dashboardRoutes";
 
 
 export const defaultPrivateRoute = {
-    redirect: '/schoolsList'
+    redirect: '/listschool'
 };
 
 

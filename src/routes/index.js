@@ -8,15 +8,18 @@ import publicRoutes,{defaultRoute} from "./publicRoutes";
 import privateRoutes,{defaultPrivateRoute} from "./privateRoutes";
 import PageNotFound from "../views/pages/common-pages/404";
 
-import {getAuthToken,setAuthToken} from '../utils/Auth'
+import {getAuthToken} from '../utils/Auth'
 
 const  AllRoutes = (props) => {
 
-    setAuthToken();
+    console.log("rendering")
+
     const auth = getAuthToken();
 
     return <BrowserRouter>
         <Switch>
+
+
             {
                 publicRoutes.map((route, index) => {
                     return (
@@ -61,36 +64,13 @@ const  AllRoutes = (props) => {
                     }
                 )
             }
-            <Route exact={true} path="/404"  render={props => {
-                return (
-                    <LoginLayout>
-                        <PageNotFound/>
-                    </LoginLayout>
-                )
-            }} />
 
-            <Route exact={true} path="/"  render={props => {
-                return (
-                    <Route render={() => <Redirect to='/login' />} />
-                )
-            }} />
+            <Route exact={true} path="/404"  render={props => {return (<PageNotFound/>)}} />
 
-            {!auth ?
-                <Route render={() => <Redirect to={defaultRoute.redirect} />} />
-                :
-                <Route render={(props) => {
-                    return (
-                        props.location.pathname !== '/'
-                            ? <Route render={() => <Redirect to='/404' />} />
-                            : <Route render={() => <Redirect to={defaultPrivateRoute.redirect} />} />
-                    )
-
-                }
-                } />
+            {!auth ? <Route render={() => <Redirect to={defaultRoute.redirect}/>}/> : <Route render={(props) => {
+                return ( props.location.pathname !== '/' ? <Route render={() => <Redirect to='/404'/>}/> : <Route render={() => <Redirect to={defaultPrivateRoute.redirect}/>}/> )
             }
-
-
-
+            }/> }
 
 
         </Switch>
@@ -100,7 +80,7 @@ const  AllRoutes = (props) => {
 
 
 const mapStateToProps = (state) => ({
-    test: "done"
+    isAuthorized: state.Login.login.isAuthorized
 })
 
 export default connect(mapStateToProps)(AllRoutes)

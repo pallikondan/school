@@ -4,6 +4,7 @@ let initialState = {
         success: false,
         error: false,
         pending: false,
+        isAuthorized:false
     },
     profile: {},
     schoolList: [],

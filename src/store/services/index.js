@@ -9,3 +9,15 @@ export const fetchSchoolList = data => {
       .then(response => response.data)
       .catch(({ data }) => ({ error: data }));
   };
+
+export const loginAPI = data => {
+    return request({
+        url: 'login/',
+        method: 'post',
+        data,
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    })
+
+};

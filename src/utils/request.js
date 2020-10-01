@@ -1,30 +1,30 @@
-import axios from 'axios';
-import {hasStorage, getStorage} from '../store/localStorage'
+import axios from 'axios'
+import { getAuthToken } from "./Auth";
+
+const request = axios.create({
+      baseURL: 'https://civil-envoy-288110.el.r.appspot.com/api/'
+});
 
 
-const client = axios.create({
-    baseURL: 'https://civil-envoy-288110.el.r.appspot.com/api/'
-
-    /*
-     * BaseURL: 'http://localhost:3000/api/merchant/',
-     * timeout: 1000 // request timeout
-     */
-  });
-
-  const token = 'Token 22d6b2bc272b509b3a9ac4873e0f59089bb3aadc'
-
-const request = options => {
-  if (hasStorage('schoolAuth')) {
-   // const { token } = getStorage('schoolAuth');
-    client.defaults.headers.common['authorization'] = token;
-  } else {
-    client.defaults.headers.common['authorization'] = token;
-    //delete client.defaults.headers.common['authorization'];
-  }
-  return client(options)
-    .then(response => response)
-    .catch(error => Promise.reject(error.response || error.message));
-};
+request.interceptors.request.use(
+    (config) => {
+        let AUTH_TOKEN = getAuthToken();
+        if(AUTH_TOKEN){
+            config.headers['Authorization'] = `Token ${AUTH_TOKEN}`;
+        }
+        return config
+    },
+    (error) => {
+      return Promise.reject(error)
+    }
+);
+request.interceptors.response.use(
+    (response) => response.data,
+    (error) => {
+      console.log('Error on API', error);
+      return Promise.reject(error)
+    }
+);
 
 export default request
 

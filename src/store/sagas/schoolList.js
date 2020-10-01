@@ -5,17 +5,20 @@ import { reducerTypes } from '../constants/index'
 
 const {schoolList} = reducerTypes
 
-export function* fetchSchoolUsersList(action) {
+export  function*  fetchSchoolUsersList(action) {
+
+
     const { payload } = action;
-    const { response, error } = yield call(fetchSchoolList, payload);
+    const { response, error } =  yield  call(fetchSchoolList, payload);
     if (response) {
       const {
         data
       } = response;
-  
-      yield put(getSchoolListSuccess(data));
+
+        yield  put(getSchoolListSuccess(data));
     } else if (error && error.messages) {
-      yield put(getSchoolListFailure());
+
+        yield put(getSchoolListFailure());
     } else {
       yield put(getSchoolListFailure());
     }

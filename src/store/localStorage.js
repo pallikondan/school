@@ -1,4 +1,4 @@
-import store from 'store';
+import store from './index';
 
 export const getStorage = key => store.get(key);
 

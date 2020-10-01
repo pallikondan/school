@@ -3,7 +3,7 @@ import { reducerTypes } from '../constants/index'
 const {schoolList} = reducerTypes
 
 export const getSchoolListRequest = () => ({
-    type: schoolList.GET_SCHOOL_LIST_REQUEST,
+    type: schoolList.GET_SCHOOL_LIST_REQUEST
 })
 
 export const getSchoolListSuccess = (data) => ({
