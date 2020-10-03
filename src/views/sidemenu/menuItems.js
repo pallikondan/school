@@ -25,14 +25,18 @@ export const menuItems = [
         name:"Register New School",
         subText:"Upload all details and bulk upload",
         isAdmin:true
-    },
-    {
-        icon:settingsIcon,
-        path:"/settings",
-        name:"Settings",
-        subText:"Other settings",
-        isAdmin:false
-
     }
 
+
 ];
+
+export const commonMenuItems = [
+    {
+    icon:settingsIcon,
+    path:"/settings",
+    name:"Settings",
+    subText:"Other settings",
+    isAdmin:false
+
+}
+]

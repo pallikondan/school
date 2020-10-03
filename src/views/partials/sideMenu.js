@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {Nav,Row,Col} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
-import {menuItems} from '../sidemenu/menuItems'
+import {menuItems,commonMenuItems} from '../sidemenu/menuItems'
 import {connect} from "react-redux";
 
 
@@ -16,9 +16,9 @@ let adminSideMenuItems,userSideMenuItems,finalmenuItems;
 
 
 if(this.props.login.isStaff) {
-    finalmenuItems = [...adminSideMenuItems,...userSideMenuItems]
+    finalmenuItems = [...adminSideMenuItems,...commonMenuItems]
 }else {
-    finalmenuItems = [...userSideMenuItems];
+    finalmenuItems = [...userSideMenuItems,...commonMenuItems];
 }
 
         return finalmenuItems.map( (menuItem,index) => {

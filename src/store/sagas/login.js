@@ -24,10 +24,8 @@ function *loginSaga(action) {
 
         if(res){
             yield put(loginSuccess(res));
-            yield setAuthToken(res);
-            //yield put(push('listschool'))
-            action.payload.history.push('listschool')
-            yield setAuthToken(res.token);
+            yield setAuthToken(res.data.response.token);
+            action.payload.history.push('listschool');
             yield put(loginPending(false));
             yield put(loginError(false));
 

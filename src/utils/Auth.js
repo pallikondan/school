@@ -8,11 +8,11 @@ export function getAuthToken() {
 
 }
 
-export function setAuthToken({data}  ) {
+export function setAuthToken(token  ) {
 
   return Cookies.set(
       TokenKey,
-      data.response.token
+token
   )
 }
 
