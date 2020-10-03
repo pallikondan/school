@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import {Row, Col, Button} from 'react-bootstrap';
+import {withRouter} from 'react-router-dom'
 import {connect} from "react-redux";
 import {loginToApp} from "../../../store/actions/login";
 import loginThumbnail from '../../../assets/login_vector_ic.png'
@@ -7,16 +8,15 @@ import TextField from '@material-ui/core/TextField';
 import {Alert} from "react-bootstrap";
 import './login.css'
 
-const login = (data,action) =>{
+const login = (data,action, history) =>{
     const loginData = new FormData();
     loginData.append('username', data.username);
     loginData.append('password', data.password);
-    action(loginData);
+    action({loginData, history});
 };
 
 
 const LoginPage = (props) => {
-
     const [credentials,setCredentials] = useState({username:"",password:""});
     const [isAlertOpen,setIsAlertOpen] = useState(false);
     useEffect(()=>{
@@ -59,7 +59,7 @@ const LoginPage = (props) => {
                                         <a href="#" className={'font-regular font-gray font-small'}>Forgot Password?</a>
                                     </div>
                                     <div className={'mar_top_5'}>
-                                        <Button onClick={()=>{login(credentials,props.loginToApp)}} className={'font-medium font-small'}
+                                        <Button onClick={()=>{login(credentials,props.loginToApp, props.history)}} className={'font-medium font-small'}
                                                 style={{background: '#3fabf6', border: 0}} size="lg"
                                                 block> Login</Button>
                                     </div>
@@ -82,4 +82,4 @@ const mapStateToProps = (state) =>{
     }
 }
 
-export default connect(mapStateToProps,{loginToApp})(LoginPage)
+export default withRouter(connect(mapStateToProps,{loginToApp})(LoginPage))
