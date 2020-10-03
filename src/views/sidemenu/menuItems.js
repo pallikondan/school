@@ -8,19 +8,31 @@ export const menuItems = [
         icon:schoolListIcon,
         path:"/listschool",
         name:"School List",
-        subText:"List of all Details in the school"
+        subText:"List of all Details in the school",
+        isAdmin:true
+    },
+    {
+        icon:schoolListIcon,
+        path:"/userdetails",
+        name:"User Details",
+        subText:"List of all Details in the school",
+        isAdmin:false
+
     },
     {
         icon:newSchoolIcon,
         path:"/register",
         name:"Register New School",
-        subText:"Upload all details and bulk upload"
+        subText:"Upload all details and bulk upload",
+        isAdmin:true
     },
     {
         icon:settingsIcon,
         path:"/settings",
         name:"Settings",
-        subText:"Other settings"
+        subText:"Other settings",
+        isAdmin:false
+
     }
 
 ];

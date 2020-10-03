@@ -5,6 +5,7 @@ const  inititalState= {
         error: false,
         pending: false,
         isAuthorized:false,
+        isStaff: false,
         profile: {}
 }
 
@@ -30,7 +31,9 @@ const  inititalState= {
                 login: {
                     ...state.login,
                     success: true,
-                    isAuthorized: true
+                    isAuthorized: true,
+                    isStaff:action.payload.data.response.is_staff,
+                    profile: {...action.payload.data.response}
                 }
             };
         case login.LOGIN_ERROR:

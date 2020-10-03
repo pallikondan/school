@@ -25,7 +25,7 @@ function *loginSaga(action) {
 
         if(res){
             yield put(loginSuccess(res));
-            yield setAuthToken(res.token);
+            yield setAuthToken(res);
             yield put(loginPending(false));
             yield put(loginError(false));
             yield put(push('listschool'))

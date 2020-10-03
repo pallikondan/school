@@ -8,13 +8,12 @@ export function getAuthToken() {
 
 }
 
-export function setAuthToken(token  ) {
+export function setAuthToken({data}  ) {
 
   return Cookies.set(
-    TokenKey,
-    token
+      TokenKey,
+      data.response.token
   )
-
 }
 
 export function removeAuthToken() {

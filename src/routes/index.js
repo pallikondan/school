@@ -19,7 +19,6 @@ const  AllRoutes = (props) => {
     return <BrowserRouter>
         <Switch>
 
-
             {
                 publicRoutes.map((route, index) => {
                     return (
