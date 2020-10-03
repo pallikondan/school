@@ -78,7 +78,7 @@ const LoginPage = (props) => {
 
 const mapStateToProps = (state) =>{
     return {
-        login:state.Login.login
+        login:state.Login
     }
 }
 

@@ -3,6 +3,7 @@ import {loginPending,loginSuccess,loginError} from "../actions/login";
 import {setAuthToken} from '../../utils/Auth'
 import {loginAPI} from "../services";
 import { reducerTypes } from '../constants'
+import { push } from 'connected-react-router'
 
 
 
@@ -26,7 +27,8 @@ function *loginSaga(action) {
             yield put(loginSuccess(res));
             yield setAuthToken(res.token);
             yield put(loginPending(false));
-            yield put(loginError(false))
+            yield put(loginError(false));
+            yield put(push('listschool'))
         }else{
             yield put(loginError(true));
             yield put(loginPending(false))

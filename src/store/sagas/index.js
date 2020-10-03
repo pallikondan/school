@@ -1,6 +1,6 @@
 import { all, fork } from 'redux-saga/effects'
 import {authWatcher} from './login';
-import {schoolWatcher} from './schoolList'
+import {schoolWatcher} from './school'
 
 
 

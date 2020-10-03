@@ -7,7 +7,7 @@ import { Edit, Delete } from '@material-ui/icons';
 import classNames from 'classnames';
 import DeleteModal from './delete'
 import EditModal from './editrecord';
-import {getSchoolListRequest} from '../../../store/actions/schoolList'
+import {getSchoolListRequest} from '../../../store/actions/school'
 import {connect } from 'react-redux';
 
 export const EditButton = ({ className, size, ...props }) => {
@@ -31,7 +31,7 @@ export const ActionsIcons = () => {
 
 class DashboardPage extends Component {
     componentDidMount() {
-        this.props.getSchoolListRequest()
+        // this.props.getSchoolListRequest()
     }
     
 

@@ -21,3 +21,14 @@ export const loginAPI = data => {
     })
 
 };
+
+export const registerSchoolAPI = data => {
+    return request({
+        url: 'school/',
+        method: 'post',
+        data,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+};

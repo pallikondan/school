@@ -80,7 +80,7 @@ const  AllRoutes = (props) => {
 
 
 const mapStateToProps = (state) => ({
-    isAuthorized: state.Login.login.isAuthorized
+    isAuthorized: state.Login.isAuthorized
 })
 
 export default connect(mapStateToProps)(AllRoutes)

@@ -8,7 +8,7 @@ const request = axios.create({
 
 request.interceptors.request.use(
     (config) => {
-        let AUTH_TOKEN = getAuthToken();
+        let AUTH_TOKEN = '22d6b2bc272b509b3a9ac4873e0f59089bb3aadc';
         if(AUTH_TOKEN){
             config.headers['Authorization'] = `Token ${AUTH_TOKEN}`;
         }

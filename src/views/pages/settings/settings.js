@@ -1,11 +1,12 @@
-import React, {Fragment} from "react";
-
+import React, {useState} from "react";
 
 const Settings = (props) => {
+
+
     return (
-        <Fragment>
-            <p>Settings Page</p>
-        </Fragment>
+        <>
+           <h1>Settings Page</h1>
+        </>
 
     )
 }

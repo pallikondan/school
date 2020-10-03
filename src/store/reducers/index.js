@@ -1,9 +1,14 @@
 import { combineReducers } from 'redux'
+import { connectRouter } from 'connected-react-router'
 
 import Login from "./login";
-import school from './schoolList'
+import School from './school'
 
-export default combineReducers({
+
+
+const RootReducer = (history) => combineReducers({
+    router: connectRouter(history),
     Login,
-    school
-})
+    School
+});
+export default RootReducer

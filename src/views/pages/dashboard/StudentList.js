@@ -331,7 +331,7 @@ const StudentLists = ({ fields = [], data = [], initialSort = "", searchQuery = 
                       aria-checked={isItemSelected}
                       tabIndex={-1}
                       key={record.id}
-                      className={classes.tableRowSelected, classes.tableRow}
+                      className={classes.tableRowSelected}
                       selected={isItemSelected}
                       style={{ height: 53 }}
                     >

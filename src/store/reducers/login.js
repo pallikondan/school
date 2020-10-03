@@ -1,7 +1,12 @@
 import { reducerTypes } from '../constants/index'
-import inititalState from '../initialState'
 
-
+const  inititalState= {
+    success: false,
+        error: false,
+        pending: false,
+        isAuthorized:false,
+        profile: {}
+}
 
  const { login } = reducerTypes,
 
