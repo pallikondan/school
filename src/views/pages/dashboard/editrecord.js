@@ -8,6 +8,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { Modal, Container, Row, Col, Form} from 'react-bootstrap'
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "../../../assets/edit_ic.png";
+import './dashboard.css'
 
 export default function DeleteModal() {
   const [open, setOpen] = React.useState(false);
@@ -59,9 +61,7 @@ const onChangeFile = (event) => {
 
   return (
     <div style={{marginRight: '8px'}}>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Edit
-      </Button>
+        <img className="h-over" src={DeleteIcon} width="25" onClick={handleClickOpen}/>
       <Dialog
         open={open}
         onClose={handleClose}

@@ -14,21 +14,22 @@ const { login } = reducerTypes;
 
 function *loginSaga(action) {
 
-
     try {
 
         yield put(loginPending(true));
         const res = yield call(
             loginAPI,
-            action.payload
+            action.payload.loginData
         );
 
         if(res){
             yield put(loginSuccess(res));
+            //yield put(push('listschool'))
+            action.payload.history.push('listschool')
             yield setAuthToken(res.token);
             yield put(loginPending(false));
             yield put(loginError(false));
-            yield put(push('listschool'))
+           
         }else{
             yield put(loginError(true));
             yield put(loginPending(false))

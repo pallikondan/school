@@ -5,6 +5,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import deleteIcon from '../../../assets/delete_ic.png';
+import './dashboard.css'
 
 export default function DeleteModal() {
   const [open, setOpen] = React.useState(false);
@@ -19,19 +21,17 @@ export default function DeleteModal() {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Deactivate
-      </Button>
+        <img className="h-over" src={deleteIcon} sizes="25" onClick={handleClickOpen}/>
       <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Delete Modal"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"Deactivate Modal"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Are you sure, want to delete selected record.
+            Are you sure, want to deactivate selected record.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
