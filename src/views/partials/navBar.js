@@ -6,6 +6,7 @@ import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import PowerSettingsNewOutlinedIcon from '@material-ui/icons/PowerSettingsNewOutlined';
 import { useHistory } from "react-router-dom";
 import {removeAuthToken} from "../../utils/Auth";
+import {connect} from "react-redux";
 
 const logout = (history) =>{
     removeAuthToken();
@@ -29,7 +30,7 @@ const TopNavBar = (props) => {
                     <li style={{display: "inline",borderLeft:"1px solid gray", borderRight:"1px solid gray",borderCollapse:"collapse"}}>
                         <IconButton aria-label="delete">
                             <AccountCircleOutlinedIcon />
-                            <span className={'font-gray font-small'}>{'Sachin kumar'}</span>
+                            <span className={'font-gray font-small'}>{ props.profile.username }</span>
                         </IconButton>
                     </li>
                     <li style={{display: "inline",borderLeft:"1px solid gray", borderRight:"1px solid gray",borderCollapse:"collapse"}}>
@@ -44,8 +45,14 @@ const TopNavBar = (props) => {
     )
 }
 
+const mapStateToProps = (state) =>{
 
-export default TopNavBar
+    return {
+        profile:state.Login.profile
+    }
+}
+
+export default connect(mapStateToProps)(TopNavBar)
 
 
 

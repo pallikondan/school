@@ -63,7 +63,7 @@ if(this.props.login.isStaff) {
 
 const mapStateToProps = (state) =>{
     return {
-        login:state.Login.isStaff
+        login:state
     }
 }
 

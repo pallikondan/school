@@ -1,7 +1,7 @@
 import { reducerTypes } from '../constants/index'
 
 const  inititalState= {
-    success: false,
+        success: false,
         error: false,
         pending: false,
         isAuthorized:false,
@@ -20,29 +20,23 @@ const  inititalState= {
         case login.LOGIN_PENDING:
             return state = {
                 ...state,
-                login: {
-                    ...state.login,
                     pending: action.payload
-                }
+
             };
         case login.LOGIN_SUCCESS:
             return state = {
-                ...state,
-                login: {
-                    ...state.login,
+                    ...state,
                     success: true,
                     isAuthorized: true,
                     isStaff:action.payload.data.response.is_staff,
-                    profile: {...action.payload.data.response}
-                }
+                    profile:action.payload.data.response
+
             };
         case login.LOGIN_ERROR:
             return state = {
-                ...state,
-                login: {
-                    ...state.login,
+                    ...state,
                     error: action.payload
-                }
+
             };
         default:
             return state
