@@ -22,7 +22,7 @@ export const menuItems = [
     {
         icon:newSchoolIcon,
         path:"/register",
-        name:"Register New School",
+        name:"Register",
         subText:"Upload all details and bulk upload",
         isAdmin:true
     }

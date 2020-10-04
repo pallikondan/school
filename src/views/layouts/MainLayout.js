@@ -3,6 +3,7 @@ import {Container, Row, Col} from "react-bootstrap";
 import SideMenu from "../partials/sideMenu";
 import TopNavBar from "../partials/navBar";
 import './layout.css';
+import AppLogo from "../../assets/logo2.jpg"
 
 const MainLayout = (props) => {
     return (
@@ -10,8 +11,10 @@ const MainLayout = (props) => {
             <Container className={'mar_pad_0'} fluid>
                 <Row className={'mar_pad_0'}>
                     <Col style={{boxShadow:"10px 0 5px -11px #aaa"}} className={'mar_pad_0'} xs={12} sm={3} xl={3} md={3} lg={3}>
-                        <div style={{background: "#35a8fc", height: "25vh"}}>
-                        <div className="circle">Logo</div>
+                        <div style={{background: "#35a8fc"}}>
+                        {/* <div className="circle">Logo</div> */}
+                        <div><img width="100%" src={AppLogo} /></div>
+                        
                         </div>
                         <div style={{background: "#ffffff", height: "75vh"}}>
                             <SideMenu/>

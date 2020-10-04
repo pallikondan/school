@@ -6,7 +6,6 @@ import {schoolWatcher} from './school'
 
 
 function *rootSaga() {
-
     yield fork(authWatcher);
     yield fork(schoolWatcher)
 }

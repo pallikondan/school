@@ -6,6 +6,7 @@ import {loginToApp} from "../../../store/actions/login";
 import loginThumbnail from '../../../assets/login_vector_ic.png'
 import TextField from '@material-ui/core/TextField';
 import {Alert} from "react-bootstrap";
+import RoundedLogo from "../../../assets/round logo.jpg"
 import './login.css'
 
 const login = (data,action, history) =>{
@@ -42,7 +43,8 @@ const LoginPage = (props) => {
                         <Row>
                             <Col style={{textAlign: "center"}}>
                                 <div style={{width: "50%", margin: "auto", marginTop: "40%"}}>
-                                <div className="circle">Logo</div>
+                                {/* <div className="circle">Logo</div> */}
+                                <div><img width="50%" src={RoundedLogo}></img></div>
                                     <div className={'mar_top_5'}>
                                         <span className={'font-medium font-black font-sub-headding'}>Log in to your account.</span>
                                     </div>

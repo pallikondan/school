@@ -15,7 +15,7 @@ let adminSideMenuItems,userSideMenuItems,finalmenuItems;
     userSideMenuItems = menuItems.filter(menuItem => menuItem.isAdmin === false);
 
 
-if(this.props.login.isStaff) {
+if(localStorage.getItem('UserType') === 'true') {
     finalmenuItems = [...adminSideMenuItems,...commonMenuItems]
 }else {
     finalmenuItems = [...userSideMenuItems,...commonMenuItems];

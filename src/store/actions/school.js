@@ -15,6 +15,19 @@ export const getSchoolListFailure = () => ({
     type: schoolConstants.GET_SCHOOL_LIST_FAILURE
 })
 
+export const getMemberRequest = () => ({
+    type: schoolConstants.GET_MEMBER_LIST_REQUEST
+})
+
+export const getMemberSuccess = (data) => ({
+    type: schoolConstants.GET_MEMBER_LIST_SUCCESS,
+    payload: data
+})
+
+export const getMemberFailure = () => ({
+    type: schoolConstants.GET_MEMBER_LIST_FAILURE
+})
+
 
 export const registerSchool = (data) => ({
     type: schoolConstants.REGISTER_SCHOOL,

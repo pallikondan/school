@@ -22,7 +22,7 @@ export const defaultRoute = '/listschool',
         {
             path: `/userdetails`,
             name: 'User Details',
-            component: UserDetails,
+            component: dashboardPage,
             exact: true,
         },
         {

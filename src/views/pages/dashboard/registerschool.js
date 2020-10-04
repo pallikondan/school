@@ -1,10 +1,12 @@
 import React, {useState, useRef,useEffect} from "react";
 import {Button, Modal, Container, Row, Col, Form} from 'react-bootstrap'
+import {withRouter} from 'react-router-dom'
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import IconButton from "@material-ui/core/IconButton";
 import {connect} from 'react-redux';
 import {registerSchool} from  '../../../store/actions/school'
 import {Alert} from "react-bootstrap";
+import { set } from "store";
 
 
 const  RegisterSchool = (props) => {
@@ -53,9 +55,13 @@ const  RegisterSchool = (props) => {
         props.registerSchool(registerData);
         // setShow(false);
         // setFormDetails(formInitState);
+        setTimeout(() => {
+            setShow(false)
+        }, 300)
         };
 
     const handleClose = () => {
+        props.history.push('listschool')
         setFormDetails(formInitState);
         setFormErrorState(formInitErrorState);
         setShow(false);
@@ -253,11 +259,11 @@ const  RegisterSchool = (props) => {
                         </Container>
                     </Modal.Body>
                     <Modal.Footer bsPrefix>
-                        <div style={{textAlign:'center'}}>
+                        {/* <div style={{textAlign:'center'}}>
                             <Alert dismissible onClose={()=>setIsAlertType({...isAlertType,isOpen: false})} show={isAlertType.isOpen} variant={isAlertType.type}>
                                {isAlertType.message}
                             </Alert>
-                        </div>
+                        </div> */}
                         <div className={'modal-footer'}>
                             <Button style={{border: "1px solid gray"}} className={'font-black font-extra-small'}
                                     variant="outline" onClick={handleClose}>
@@ -280,4 +286,4 @@ const mapStateToProps = (state) =>{
     }
 };
 
-export default connect(mapStateToProps,{registerSchool})(RegisterSchool)
+export default withRouter(connect(mapStateToProps,{registerSchool})(RegisterSchool))

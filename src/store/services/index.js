@@ -10,6 +10,15 @@ export const fetchSchoolList = data => {
       .catch(({ data }) => ({ error: data }));
   };
 
+  export const fetchMemberList = data => {
+    return request({
+      url: 'schooluser/?school=1',
+      method: 'get',
+    })
+      .then(response => response.data)
+      .catch(({ data }) => ({ error: data }));
+  };
+
 export const loginAPI = data => {
     return request({
         url: 'login/',
