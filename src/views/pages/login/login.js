@@ -20,14 +20,11 @@ const login = (data,action, history) =>{
 const LoginPage = (props) => {
     const [credentials,setCredentials] = useState({username:"",password:""});
     const [isAlertOpen,setIsAlertOpen] = useState(false);
-    useEffect(()=>{
-        if(props.login.success){
+    const handleUserinput = (e) =>{
+        setIsAlertOpen(false);
+        setCredentials({...credentials,[e.target.id]:e.target.value});
+    };
 
-        }else{
-            setIsAlertOpen(true);
-        }
-
-    },[props.login.success]);
         return (
             <React.Fragment>
                 <Col style={{background: "#35a8fc", height: "100vh", padding: "5% 1%"}}>
@@ -42,17 +39,17 @@ const LoginPage = (props) => {
                     <div>
                         <Row>
                             <Col style={{textAlign: "center"}}>
-                                <div style={{width: "50%", margin: "auto", marginTop: "40%"}}>
+                                <div style={{width: "50%", margin: "auto", marginTop: "30%"}}>
                                 {/* <div className="circle">Logo</div> */}
-                                <div><img width="50%" src={RoundedLogo}></img></div>
+                                <div style={{textAlign:'center'}}><img style={{borderRadius: '50%'}} width="30%" src={RoundedLogo}/></div>
                                     <div className={'mar_top_5'}>
                                         <span className={'font-medium font-black font-sub-headding'}>Log in to your account.</span>
                                     </div>
                                     <div className={'mar_top_5'}>
                                         <form>
-                                        <TextField error={props.login.error} autoComplete={'on'}  id="email" label="Email Id" margin="normal" value={credentials.username} onChange={e=>setCredentials({...credentials,username:e.target.value})}
+                                        <TextField error={props.login.error} autoComplete={'on'}  id="username" label="Email Id" margin="normal" value={credentials.username} onChange={handleUserinput}
                                                    InputLabelProps={{shrink: true,}} fullWidth={true}/>
-                                        <TextField error={props.login.error}  autoComplete={'on'}  id="password" label="Password" margin="normal" value={credentials.password} onChange={e=>setCredentials({...credentials,password:e.target.value})}
+                                        <TextField error={props.login.error}  autoComplete={'on'}  id="password" label="Password" margin="normal" value={credentials.password} onChange={handleUserinput}
                                                    InputLabelProps={{shrink: true,}} type={'password'}
                                                    fullWidth={true}/>
                                         </form>
@@ -66,7 +63,7 @@ const LoginPage = (props) => {
                                                 block> Login</Button>
                                     </div>
                                     <br/>
-                                    <Alert dismissible onClose={isAlertOpen} show={props.login.error} variant={'danger'}>
+                                    <Alert show={isAlertOpen} variant={'danger'}>
                                         Incorrect Username or Password
                                     </Alert>
                                 </div>

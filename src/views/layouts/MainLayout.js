@@ -11,9 +11,9 @@ const MainLayout = (props) => {
             <Container className={'mar_pad_0'} fluid>
                 <Row className={'mar_pad_0'}>
                     <Col style={{boxShadow:"10px 0 5px -11px #aaa"}} className={'mar_pad_0'} xs={12} sm={3} xl={3} md={3} lg={3}>
-                        <div style={{background: "#35a8fc"}}>
+                        <div style={{background: "#35a8fc",textAlign:'center',padding:"10%"}}>
                         {/* <div className="circle">Logo</div> */}
-                        <div><img width="100%" src={AppLogo} /></div>
+                        <div><img style={{borderRadius:'50%'}} width="40%" src={AppLogo} /></div>
                         
                         </div>
                         <div style={{background: "#ffffff", height: "75vh"}}>

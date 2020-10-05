@@ -6,7 +6,6 @@ import IconButton from "@material-ui/core/IconButton";
 import {connect} from 'react-redux';
 import {registerSchool} from  '../../../store/actions/school'
 import {Alert} from "react-bootstrap";
-import { set } from "store";
 
 
 const  RegisterSchool = (props) => {
