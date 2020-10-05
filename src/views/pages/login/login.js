@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import {Row, Col, Button} from 'react-bootstrap';
 import {withRouter} from 'react-router-dom'
 import {connect} from "react-redux";
@@ -7,7 +7,6 @@ import loginThumbnail from '../../../assets/login_vector_ic.png'
 import TextField from '@material-ui/core/TextField';
 import {Alert} from "react-bootstrap";
 import RoundedLogo from "../../../assets/round logo.jpg"
-import './login.css'
 
 const login = (data,action, history) =>{
     const loginData = new FormData();
@@ -39,9 +38,8 @@ const LoginPage = (props) => {
                     <div>
                         <Row>
                             <Col style={{textAlign: "center"}}>
-                                <div style={{width: "50%", margin: "auto", marginTop: "30%"}}>
-                                {/* <div className="circle">Logo</div> */}
-                                <div style={{textAlign:'center'}}><img style={{borderRadius: '50%'}} width="30%" src={RoundedLogo}/></div>
+                                <div style={{width: "50%", margin: "auto", marginTop: "35%"}}>
+                                <div style={{textAlign:'center'}}><img style={{borderRadius: '50%'}} width="25%" src={RoundedLogo} alt={'MiKids'}/></div>
                                     <div className={'mar_top_5'}>
                                         <span className={'font-medium font-black font-sub-headding'}>Log in to your account.</span>
                                     </div>

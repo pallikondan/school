@@ -12,7 +12,7 @@ const MainLayout = (props) => {
                 <Row className={'mar_pad_0'}>
                     <Col style={{boxShadow:"10px 0 5px -11px #aaa"}} className={'mar_pad_0'} xs={12} sm={3} xl={3} md={3} lg={3}>
                         <div style={{background: "#35a8fc",textAlign:'center',padding:"10%"}}>
-                        <img style={{borderRadius:'50%'}} width="40%" src={AppLogo} />
+                        <img style={{borderRadius:'50%'}} width="40%" src={AppLogo}  alt={'MiKids'}/>
                         </div>
                         <div style={{background: "#ffffff", height: "75vh"}}>
                             <SideMenu/>
