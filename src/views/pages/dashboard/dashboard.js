@@ -31,7 +31,6 @@ export const ActionsIcons = () => {
 
 class DashboardPage extends Component {
     componentDidMount() {
-        console.log('from didmountttt',localStorage.getItem('UserType'))
         if(localStorage.getItem('UserType') === 'false') {
             this.props.getMemberRequest()
         } else {
@@ -42,7 +41,6 @@ class DashboardPage extends Component {
 
     render() {
         const {props} = this
-        console.log('propsssssssss', props, localStorage.getItem('UserType'));
     const fields = [
         { key: 'name', columnName: 'School Name', type: 'school_name', form: false, required: false, visible: true, value: true },
         { key: 'address', columnName: 'Address', type: 'address', form: false, required: false, visible: true, value: true },
@@ -495,7 +493,6 @@ class DashboardPage extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log('schoollistttttt', state);
     return {
         schoolList: state.School.schoolList.list
     }

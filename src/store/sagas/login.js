@@ -21,13 +21,13 @@ function *loginSaga(action) {
             loginAPI,
             action.payload.loginData
         );
-        console.log('ressss from login', res)
 
         if(res){
             yield put(loginSuccess(res));
             localStorage.setItem('UserType', res.data.response.is_staff)
             yield setAuthToken(res.data.response.token);
-            action.payload.history.push('listschool');
+            //action.payload.history.push('listschool');
+            action.payload.redirect(action.payload.history)
            // yield put(loginPending(false));
             //yield put(loginError(false));
 

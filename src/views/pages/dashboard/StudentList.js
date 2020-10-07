@@ -289,10 +289,11 @@ const StudentLists = ({ fields = [], data = [], initialSort = "", searchQuery = 
     }
   }
 
-  const isSelected = record => props.selectedRecords.findIndex(x => x.id === record.id) !== -1;
+  const isSelected = record => {
+  return  props.selectedRecords.findIndex(x => x.id === record.id) !== -1;
+  }
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
-  console.log(emptyRows, ' emptyRows ', data)
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>

@@ -20,7 +20,6 @@ const initialState = {
 }
 
  const School = (state = initialState, action) =>{
-     console.log('from reducerrrr', action);
 
     switch (action.type) {
 
@@ -47,7 +46,6 @@ const initialState = {
                 memberListLoading: true
             };
           case schoolConstants.GET_MEMBER_LIST_SUCCESS:
-              console.log('actionnnn memenbe red', action);
               state.memberList.list = action.payload;
               return {
                   ...state,
