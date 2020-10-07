@@ -1,0 +1,10 @@
+.side-panel{
+    display: inline-block;
+}
+
+@media screen and (max-width: 1200px) {
+    .side-panel{
+        display: none;
+
+    }
+}
