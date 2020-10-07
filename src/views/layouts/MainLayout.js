@@ -1,4 +1,4 @@
-import React, {Fragment,useRef} from "react";
+import React, {Fragment, useRef, useState} from "react";
 import {Container, Row, Col} from "react-bootstrap";
 import SideMenu from "../partials/sideMenu";
 import TopNavBar from "../partials/navBar";
@@ -10,15 +10,17 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 const MainLayout = (props) => {
     const menuRef = useRef(null);
+    const [isMenuOpen,setMenu] = useState(false);
     const handleMenu = (e) =>{
-    let isMenuOpen = false;
-    if(!isMenuOpen){
-        menuRef.current.style.display='block'
-    }else {
-        menuRef.current.style.display='none'
-
+    if(isMenuOpen){
+        menuRef.current.style.display='none';
+        setMenu(!isMenuOpen);
+    }else{
+        menuRef.current.style.display='block';
+        setMenu(!isMenuOpen);
     }
-};
+console.log('sidemenu state',isMenuOpen)
+    };
     return (
         <Fragment>
             <LoadingBar style={{ backgroundColor: '#35a8fc', height: '5px' }} />
