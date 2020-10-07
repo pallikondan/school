@@ -23,7 +23,6 @@ export  function*  fetchSchoolUsersList(action) {
     const { payload } = action;
     const response = []
     const result =  yield call(fetchMemberList, payload);
-    console.log('fetchmemberlisttt', result);
     if (response) {
 
         yield put(getMemberSuccess(response));
@@ -38,9 +37,7 @@ export  function*  registerSchool(action) {
     const { payload } = action;
     try{
         const { response, error } =  yield  call(registerSchoolAPI, payload);
-        console.log('school register response',response)
         // success trigger here
-        console.log('school register error',error)
 
     }catch (e) {
         console.log("error in api",e)

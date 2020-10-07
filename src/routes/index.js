@@ -12,7 +12,6 @@ import {getAuthToken} from '../utils/Auth'
 
 const  AllRoutes = (props) => {
 
-    console.log("rendering")
 
     const auth = getAuthToken();
 

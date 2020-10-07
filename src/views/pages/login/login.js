@@ -12,8 +12,13 @@ const login = (data,action, history) =>{
     const loginData = new FormData();
     loginData.append('username', data.username);
     loginData.append('password', data.password);
-    action({loginData, history});
+    action({loginData, history, redirect});
+    // redirect(history)
 };
+
+const redirect = (history) => {
+    history.push('listschool')
+}
 
 
 const LoginPage = (props) => {
