@@ -6,6 +6,7 @@ import rootSaga from './sagas'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { createBrowserHistory } from 'history'
 import { routerMiddleware } from 'connected-react-router'
+
 export const history = createBrowserHistory()
 const  sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = composeWithDevTools({});

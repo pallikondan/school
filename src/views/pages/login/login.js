@@ -13,7 +13,6 @@ const login = (data,action, history) =>{
     loginData.append('username', data.username);
     loginData.append('password', data.password);
     action({loginData, history, redirect});
-    // redirect(history)
 };
 
 const redirect = (history) => {

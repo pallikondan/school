@@ -2,6 +2,7 @@ import React, {Fragment,useRef} from "react";
 import {Container, Row, Col} from "react-bootstrap";
 import SideMenu from "../partials/sideMenu";
 import TopNavBar from "../partials/navBar";
+import LoadingBar from 'react-redux-loading-bar'
 import './layout.css';
 import AppLogo from "../../assets/logo2.jpg"
 import IconButton from '@material-ui/core/IconButton';
@@ -20,6 +21,7 @@ const MainLayout = (props) => {
 };
     return (
         <Fragment>
+            <LoadingBar style={{ backgroundColor: '#35a8fc', height: '5px' }} />
             <Container className={'mar_pad_0'} fluid>
                 <Row className={'mar_pad_0'}>
                     <Col style={{boxShadow:"10px 0 5px -11px #aaa"}} className={'mar_pad_0'} xs={12} sm={12} xl={3} md={3} lg={3}>
