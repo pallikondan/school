@@ -41,3 +41,14 @@ export const registerSchoolAPI = data => {
         }
     })
 };
+
+export const registerMultipleSchoolAPI = data => {
+  return request({
+      url: 'school/',
+      method: 'post',
+      data,
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  })
+};

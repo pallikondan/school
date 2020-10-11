@@ -4,14 +4,17 @@ import {withRouter} from 'react-router-dom'
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import IconButton from "@material-ui/core/IconButton";
 import {connect} from 'react-redux';
-import {registerSchool} from  '../../../store/actions/school'
+import {registerSchool, registerMultipleSchoolRequest} from  '../../../store/actions/school'
 import {Alert} from "react-bootstrap";
+import XLSX from 'xlsx'
 
 
 const  RegisterSchool = (props) => {
     const handleShow = () => setShow(true);
     const [show, setShow] = useState(true);
     const [logo, setLogo] = useState('');
+    const [bulkUpload, enableBulkUpload] = useState(false);
+    const [bulkUploadData, setBulkData] = useState([]);
     const [imageLogo, setImageLogo] = useState('');
     const [bulkFile, setbulkFile] = useState('');
     const imageUploadRef = useRef(null);
@@ -39,6 +42,9 @@ const  RegisterSchool = (props) => {
     const [formErrorState, setFormErrorState] = useState(formInitErrorState);
 
     const handleSubmission = () => {
+        if(bulkUpload) {
+            props.registerMultipleSchoolRequest(bulkUploadData)
+        } else {
         let fieldsInObj;
         let registerData = {
             ...formDetails,
@@ -51,12 +57,14 @@ const  RegisterSchool = (props) => {
             }
 
         setFormErrorState({...formErrorState,[fieldsInObj]:false});
-        props.registerSchool(registerData);
+            props.registerSchool(registerData);
+        
         // setShow(false);
         // setFormDetails(formInitState);
         setTimeout(() => {
             setShow(false)
         }, 300)
+    }
         };
 
     const handleClose = () => {
@@ -102,6 +110,24 @@ const  RegisterSchool = (props) => {
         event.stopPropagation();
         event.preventDefault();
         let file = event.target.files[0];
+        var reader = new FileReader();
+        reader.onload = e => {
+          var data = e.target.result;
+          var workbook = XLSX.read(data, {
+              type: 'binary'
+          })
+
+          workbook.SheetNames.forEach((sheetName) => {
+              var xl_row_object = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
+              setBulkData(xl_row_object);
+              enableBulkUpload(true)
+              //props.registerMultipleSchoolRequest(xl_row_object)
+          })
+
+     
+        };
+        reader.readAsBinaryString(file)
+        //reader.readAsText(file);
         setbulkFile(file);
     };
 
@@ -222,7 +248,7 @@ const  RegisterSchool = (props) => {
                                                 <span className={'font-small'}>{bulkFile.name}</span>
                                                 {bulkFile ?
                                                     <IconButton onClick={() => {
-                                                        setbulkFile('')
+                                                        setbulkFile(''); enableBulkUpload(false)
                                                     }} disableRipple={true} size={'small'} aria-label="delete">
                                                         <HighlightOffIcon/>
                                                     </IconButton>
@@ -285,4 +311,4 @@ const mapStateToProps = (state) =>{
     }
 };
 
-export default withRouter(connect(mapStateToProps,{registerSchool})(RegisterSchool))
+export default withRouter(connect(mapStateToProps,{registerSchool, registerMultipleSchoolRequest})(RegisterSchool))

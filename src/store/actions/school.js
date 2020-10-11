@@ -43,3 +43,17 @@ export const registerSchoolFailure = (data) => ({
     type: schoolConstants.REGISTER_SCHOOL_FAILURE,
     payload:data
 })
+
+export const registerMultipleSchoolRequest = (data) => ({
+    type: schoolConstants.REGISTER_MULTIPLE_SCHOOL_REQUEST,
+    payload: data
+})
+
+export const registerMultipleSchoolSuccess = (data) => ({
+    type: schoolConstants.REGISTER_MULTIPLE_SCHOOL_SUCCESS,
+    payload: data
+})
+
+export const registerMultipleSchoolFailure = () => ({
+    type: schoolConstants.REGISTER_MULTIPLE_SCHOOL_FAILURE
+})
