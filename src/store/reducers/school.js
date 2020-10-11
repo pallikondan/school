@@ -66,6 +66,15 @@ const initialState = {
         case schoolConstants.REGISTER_SCHOOL_FAILURE:
             return {...state};
 
+            case schoolConstants.REGISTER_MULTIPLE_SCHOOL_REQUEST:
+                return {...state};
+    
+            case schoolConstants.REGISTER_MULTIPLE_SCHOOL_SUCCESS:
+                return {...state};
+    
+            case schoolConstants.REGISTER_MULTIPLE_SCHOOL_FAILURE:
+                return {...state};
+
         default:
             return state
 
