@@ -9,7 +9,7 @@ import {Alert} from "react-bootstrap";
 import XLSX from 'xlsx'
 
 
-const  RegisterSchoolModal = (props) => {
+const  SchoolModal = (props) => {
     const handleShow = () => setShow(true);
     const [show, setShow] = useState(true);
     const [logo, setLogo] = useState('');
@@ -311,4 +311,4 @@ const mapStateToProps = (state) =>{
     }
 };
 
-export default withRouter(connect(mapStateToProps,{registerSchool, registerMultipleSchoolRequest})(RegisterSchoolModal))
+export default withRouter(connect(mapStateToProps,{registerSchool, registerMultipleSchoolRequest})(SchoolModal))

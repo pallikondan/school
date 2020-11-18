@@ -9,6 +9,9 @@ import DeleteModal from './delete'
 import EditModal from './editrecord';
 import {getSchoolListRequest, getMemberRequest} from '../../../store/actions/school'
 import {connect } from 'react-redux';
+import schoolListIcon from "../../../assets/School_list_ic.png";
+
+
 
 export const EditButton = ({ className, size, ...props }) => {
     return <Button style={{minWidth: 100}} className={classNames(className)} size={size || "small"} color="primary" variant="outlined" {...props}><Edit className="mr-1" fontSize="small" /> {props.label || "Button"}</Button>
@@ -470,7 +473,7 @@ class DashboardPage extends Component {
         <Fragment>
             <Row className={'mar_pad_0'}>
                 <Col className={'mar_pad_0'}>
-                    <TopBreadCrumb bread={props}/>
+                    <TopBreadCrumb name={'School List'} icon={schoolListIcon} isSearch={true} bread={props}/>
                 </Col>
             </Row>
             {

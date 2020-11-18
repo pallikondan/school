@@ -9,9 +9,8 @@ import {Alert} from "react-bootstrap";
 import XLSX from 'xlsx'
 
 
-const  RegisterSchoolModal = (props) => {
-    const handleShow = () => setShow(true);
-    const [show, setShow] = useState(true);
+const  UserModal = (props) => {
+    const [show, setShow] = useState(props.show);
     const [logo, setLogo] = useState('');
     const [bulkUpload, enableBulkUpload] = useState(false);
     const [bulkUploadData, setBulkData] = useState([]);
@@ -22,20 +21,26 @@ const  RegisterSchoolModal = (props) => {
     const [isAlertType,setIsAlertType] = useState({isOpen:true,type:'success',message:'success / error will show here'});
 
     const formInitState = {
-        name:'',
+        schoolName:'',
+        userName:'',
+        parentName:'',
+        admissionNo:'',
+        teacherId:'',
+        driver_contact_number:'',
         location:'',
-        admin_username:'',
         address:'',
-        phone_number:'',
-        email:''
+        role:''
     };
     const formInitErrorState = {
-        name:false,
+        schoolName:false,
+        userName:false,
+        parentName:false,
+        admissionNo:false,
+        teacherId:false,
+        driver_contact_number:false,
         location:false,
-        admin_username:false,
         address:false,
-        phone_number:false,
-        email:false,
+        role:false
     };
 
     const [formDetails, setFormDetails] = useState(formInitState);
@@ -68,7 +73,7 @@ const  RegisterSchoolModal = (props) => {
         };
 
     const handleClose = () => {
-        props.history.push('listschool')
+        props.history.push('userdetails');
         setFormDetails(formInitState);
         setFormErrorState(formInitErrorState);
         setShow(false);
@@ -145,7 +150,7 @@ const  RegisterSchoolModal = (props) => {
         <>
             <Modal show={show} size={'xl'} centered dialogClassName='modal-dialog' onHide={handleClose}>
                 <Modal.Header bsPrefix={'pad_2'}>
-                    <Modal.Title bsPrefix={'font-small font-medium'}>Register New School</Modal.Title>
+                    {props.type==='edit'?<Modal.Title bsPrefix={'font-small font-medium'}>Edit User</Modal.Title>:<Modal.Title bsPrefix={'font-small font-medium'}>Register New User</Modal.Title>}
                     <hr className={'modal-dotted'}/>
                 </Modal.Header>
                 <Form >
@@ -153,16 +158,14 @@ const  RegisterSchoolModal = (props) => {
                         <Container>
                             <Row>
                                 <Col>
-                                    <Form.Group  as={Row}>
+                                    <Form.Group as={Row}>
+
                                         <Form.Label bsPrefix={'font-small'} column sm="4">
-                                            School Name
+                                            Username
                                         </Form.Label>
-                                        <Col>
-                                            <Form.Control  id={'name'} onBlur={validateFields} onChange={e=>setFormDetails({...formDetails,name:e.target.value})} value={formDetails.name} type="text" required />
-                                            {formErrorState.name ? <span className={'font-extra-small font-red'}>Please provide a school Name.</span> : ""}
-                                            <Form.Control.Feedback type="invalid">
-                                                Please choose a username.
-                                            </Form.Control.Feedback>
+                                        <Col sm="8">
+                                            <Form.Control onBlur={validateFields} value={formDetails.userName} onChange={e=>setFormDetails({...formDetails,admin_username:e.target.value})} id={'userName'}  type="text"/>
+                                            {formErrorState.userName ? <span className={'font-extra-small font-red'}> Please provide a username.</span> : ""}
                                         </Col>
                                     </Form.Group>
                                     <Form.Group as={Row}>
@@ -175,31 +178,20 @@ const  RegisterSchoolModal = (props) => {
 
                                         </Col>
                                     </Form.Group>
-                                    <Form.Group as={Row}>
-
+                                    <Form.Group  as={Row}>
                                         <Form.Label bsPrefix={'font-small'} column sm="4">
-                                            Admin Username
-                                        </Form.Label>
-                                        <Col sm="8">
-                                            <Form.Control onBlur={validateFields} value={formDetails.admin_username} onChange={e=>setFormDetails({...formDetails,admin_username:e.target.value})} id={'admin_username'}  type="text"/>
-                                            {formErrorState.admin_username ? <span className={'font-extra-small font-red'}> Please provide a admin username.</span> : ""}
-                                        </Col>
-                                    </Form.Group>
-                                    <Form.Group as={Row}>
-                                        <Form.Label bsPrefix={'font-small'} column sm="4">
-                                            School Logo
+                                            School Name
                                         </Form.Label>
                                         <Col>
-                                            {logo ? <img height={50} src={imageLogo} alt={'logo'}/> : ""}
-                                            <input accept="image/png, image/jpeg, image/jpg"  style={{display: 'none'}} onChange={onChangeImageFile.bind(this)} ref={imageUploadRef} type="file"/>
-                                            <Button size="xs" className={'font-small'} style={{
-                                                background: '#6cc04c',
-                                                border: "none",
-                                                marginLeft: "20px",
-                                                borderRadius: "10px"
-                                            }} onClick={handleImageBtnClick}> {'+ Choose File'}</Button>
+                                            <Form.Control  id={'schoolName'} onBlur={validateFields} onChange={e=>setFormDetails({...formDetails,name:e.target.value})} value={formDetails.name} type="text" required />
+                                            {formErrorState.schoolName ? <span className={'font-extra-small font-red'}>Please provide a school Name.</span> : ""}
+                                            <Form.Control.Feedback type="invalid">
+                                                Please choose a school name.
+                                            </Form.Control.Feedback>
                                         </Col>
                                     </Form.Group>
+
+
                                 </Col>
                                 <Col>
                                     <Form.Group as={Row}>
@@ -213,26 +205,27 @@ const  RegisterSchoolModal = (props) => {
                                     </Form.Group>
                                     <Form.Group as={Row}>
                                         <Form.Label bsPrefix={'font-small'} column sm="4">
-                                            Contact Number
+                                            Driver Contact Number
                                         </Form.Label>
                                         <Col sm="8">
-                                            <Form.Control onBlur={validateFields} value={formDetails.phone_number} onChange={e=>setFormDetails({...formDetails,phone_number:e.target.value})} id={'phone_number'} type="phone"/>
-                                            {formErrorState.phone_number ? <span className={'font-extra-small font-red'}> Please provide 10 digit contact number.</span> : ""}
+                                            <Form.Control onBlur={validateFields} value={formDetails.driver_contact_number} onChange={e=>setFormDetails({...formDetails,driver_contact_number:e.target.value})} id={'driver_contact_number'} type="phone"/>
+                                            {formErrorState.driver_contact_number ? <span className={'font-extra-small font-red'}> Please provide 10 digit contact number.</span> : ""}
                                         </Col>
                                     </Form.Group>
                                     <Form.Group as={Row}>
                                         <Form.Label bsPrefix={'font-small'} column sm="4">
-                                            School Email
+                                            Role Type
                                         </Form.Label>
                                         <Col>
-                                            <Form.Control onBlur={validateFields}  value={formDetails.email} onChange={e=>setFormDetails({...formDetails,email:e.target.value})} id={'email'}  type="email"/>
-                                            {formErrorState.email ? <span className={'font-extra-small font-red'}> Please provide email.</span> : ""}
+                                            <Form.Control onBlur={validateFields}  value={formDetails.role} onChange={e=>setFormDetails({...formDetails,role:e.target.value})} id={'role'}  type="text"/>
+                                            {formErrorState.role ? <span className={'font-extra-small font-red'}> Please provide role.</span> : ""}
                                         </Col>
                                     </Form.Group>
                                 </Col>
                             </Row>
                             <Row>
-                                <Col>
+                                {props.type !== 'edit' ?
+                                    <Col>
                                     <hr className={'modal-dotted'}/>
                                     <p>OR</p>
                                     <p>Upload Bulk file</p>
@@ -275,6 +268,7 @@ const  RegisterSchoolModal = (props) => {
                                         </Col>
                                     </Row>
                                 </Col>
+                                    :<Col/>}
                             </Row>
                             <Row>
                                 <Col>
@@ -291,12 +285,16 @@ const  RegisterSchoolModal = (props) => {
                         </div> */}
                         <div className={'modal-footer'}>
                             <Button style={{border: "1px solid gray"}} className={'font-black font-extra-small'}
-                                    variant="outline" onClick={handleClose}>
+                                    variant="outline" onClick={props.onClose}>
                                 Cancel
                             </Button>
+                            {props.type==="edit" ?  <Button onClick={handleSubmission} className={'font-extra-small btn-blue'} >
+                                    Edit User
+                                </Button> :
                             <Button onClick={handleSubmission} className={'font-extra-small btn-blue'} >
-                                Register
+                                Register User
                             </Button>
+                            }
                         </div>
                     </Modal.Footer>
                 </Form>
@@ -311,4 +309,4 @@ const mapStateToProps = (state) =>{
     }
 };
 
-export default withRouter(connect(mapStateToProps,{registerSchool, registerMultipleSchoolRequest})(RegisterSchoolModal))
+export default withRouter(connect(mapStateToProps,{registerSchool, registerMultipleSchoolRequest})(UserModal))

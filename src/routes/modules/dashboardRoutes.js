@@ -1,6 +1,7 @@
 import dashboardPage from "../../views/pages/dashboard/dashboard";
-import RegisterSchool from "../../views/pages/dashboard/registerschool";
-import UserDetails from "../../views/pages/dashboard/userDetails";
+import RegisterSchoolModal from "../../views/pages/dashboard/registerschool";
+import UserModal from "../../views/pages/modals/userModal";
+import UserDetailsPage from "../../views/pages/dashboard/userDetails";
 import settings from "../../views/pages/settings/settings";
 
 
@@ -16,13 +17,13 @@ export const defaultRoute = '/listschool',
         {
             path: `/register`,
             name: 'Register New School',
-            component: RegisterSchool,
+            component: UserModal,
             exact: true,
         },
         {
             path: `/userdetails`,
             name: 'User Details',
-            component: dashboardPage,
+            component: UserDetailsPage,
             exact: true,
         },
         {

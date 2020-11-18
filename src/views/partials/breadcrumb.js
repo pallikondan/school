@@ -1,6 +1,5 @@
 import React, {Fragment} from "react";
 import {Navbar,Form,FormControl} from "react-bootstrap";
-import schoolListIcon from "../../assets/School_list_ic.png";
 
 
 const TopBreadCrumb = (props) => {
@@ -11,18 +10,19 @@ const TopBreadCrumb = (props) => {
                 <Navbar.Brand href={'#'}>
                     <img
                         alt=""
-                        src={schoolListIcon}
+                        src={props.icon}
                         width="35"
                         height="35"
                         className="d-inline-block align-top"
                     />{' '}
-                    {<span className={'font-bold font-size-regular' }>{'Schools List'}</span>}
+                    {<span className={'font-bold font-size-regular' }>{props.name}</span>}
                 </Navbar.Brand>
 
-
+                {props.isSearch ?
                 <Form inline>
                     <FormControl style={{borderRadius:"10px"}} type="text" placeholder="search"/>
                 </Form>
+                    : ""}
             </Navbar>
         </Fragment>
 

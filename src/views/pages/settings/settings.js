@@ -1,11 +1,13 @@
-import React, {useState} from "react";
+import React from "react";
+import TopBreadCrumb from "../../partials/breadcrumb";
+import settinsIcon from "../../../assets/setting_ic.png";
 
 const Settings = (props) => {
 
 
     return (
         <>
-           <h1>Settings Page</h1>
+            <TopBreadCrumb name={"Settings"} icon={settinsIcon} isSearch={false} bread={props}/>
         </>
 
     )

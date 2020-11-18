@@ -5,6 +5,7 @@
 }
 .menu-items{
     display: block;
+    min-height: 74.5vh;
 
 }
 
