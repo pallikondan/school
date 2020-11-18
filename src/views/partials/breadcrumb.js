@@ -6,7 +6,7 @@ const TopBreadCrumb = (props) => {
 
     return (
         <Fragment>
-            <Navbar style={{background:"#dee6f1"}} className="justify-content-between">
+            <Navbar style={{background:"#dee6f1",marginBottom:"30px"}} className="justify-content-between">
                 <Navbar.Brand href={'#'}>
                     <img
                         alt=""

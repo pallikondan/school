@@ -14,7 +14,7 @@ class SideMenu extends Component {
         let adminSideMenuItems, userSideMenuItems, finalmenuItems;
         adminSideMenuItems = menuItems.filter(menuItem => menuItem.isAdmin === true);
         userSideMenuItems = menuItems.filter(menuItem => menuItem.isAdmin === false);
-        if(type==='true'){
+        if(JSON.parse(type)){
             finalmenuItems = [...adminSideMenuItems, ...userSideMenuItems];
         } else {
             finalmenuItems = [...userSideMenuItems];

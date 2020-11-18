@@ -11,8 +11,6 @@ import PageNotFound from "../views/pages/common-pages/404";
 import {getAuthToken} from '../utils/Auth'
 
 const  AllRoutes = (props) => {
-
-
     const auth = getAuthToken();
     const type = localStorage.getItem('UserType');
     return <BrowserRouter>
@@ -65,7 +63,7 @@ const  AllRoutes = (props) => {
 
             {
                 adminRoutes.map((route, index) => {
-                        if(type==='true'){
+                        if(JSON.parse(type)){
                             return (
                                 <Route
                                     key={index}
