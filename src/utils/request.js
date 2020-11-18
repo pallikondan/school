@@ -20,14 +20,10 @@ request.interceptors.request.use(
 );
 request.interceptors.response.use(
      (response) => {
-
-         console.log("from utils",response)
-
         return response.data
 
     },
     (error) => {
-      console.log('Error on API', error);
       return Promise.reject(error)
     }
 );
