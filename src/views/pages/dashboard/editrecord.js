@@ -11,7 +11,7 @@ import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "../../../assets/edit_ic.png";
 import './dashboard.css'
 
-export default function DeleteModal() {
+export default function EditModal() {
   const [open, setOpen] = React.useState(false);
   const [logo, setLogo] = useState('');
   const [imageLogo, setImageLogo] = useState('');
@@ -61,7 +61,7 @@ const onChangeFile = (event) => {
 
   return (
     <div style={{marginRight: '8px'}}>
-        <img className="h-over" src={DeleteIcon} width="25" onClick={handleClickOpen}/>
+        <img alt="" className="h-over" src={DeleteIcon} width="25" onClick={handleClickOpen}/>
       <Dialog
         open={open}
         onClose={handleClose}

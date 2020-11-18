@@ -5,7 +5,7 @@ import schoolListIcon from "../../../assets/School_list_ic.png";
 import {Col, Row} from "react-bootstrap";
 import UserModal from "../modals/userModal";
 import DeleteModal from './delete'
-import EditModal from './editrecord';
+import EditModal from '../modals/userModal';
 import UserDataTable from './StudentList';
 import {getMemberRequest} from '../../../store/actions/school'
 
@@ -52,7 +52,10 @@ class UserDetails extends Component {
             { key: 'teacher_id', columnName: 'Teacher Id', type: 'teacher_id', form: false, required: false, visible: true, value: true },
             {
                 key: 'action', columnName: 'Actions', label: 'Actions', render: (value, record) => (
-                    <ActionsIcons/>
+                    <div style={{display: "flex"}}>
+            <EditModal openModal={()=>{this.setState({showUserModal:true,modalType:'edit'})}}></EditModal>
+            <DeleteModal></DeleteModal>
+        </div>
                     
                 ),visible: true, form: false
             }
