@@ -9,7 +9,7 @@ export const menuItems = [
         path:"/listschool",
         name:"School List",
         subText:"List of all Details in the school",
-        isAdmin:true
+        isAdmin:false
     },
     {
         icon:schoolListIcon,
