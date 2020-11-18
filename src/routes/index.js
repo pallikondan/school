@@ -5,7 +5,7 @@ import LoginLayout from "../views/layouts/loginLayout";
 import MainLayout from "../views/layouts/MainLayout";
 
 import publicRoutes,{defaultRoute} from "./publicRoutes";
-import privateRoutes,{defaultPrivateRoute} from "./privateRoutes";
+import privateRoutes,{defaultPrivateRoute,adminRoutes} from "./privateRoutes";
 import PageNotFound from "../views/pages/common-pages/404";
 
 import {getAuthToken} from '../utils/Auth'
@@ -14,7 +14,7 @@ const  AllRoutes = (props) => {
 
 
     const auth = getAuthToken();
-
+    const type = localStorage.getItem('UserType');
     return <BrowserRouter>
         <Switch>
 
@@ -40,6 +40,32 @@ const  AllRoutes = (props) => {
             {
                 privateRoutes.map((route, index) => {
                         if(auth){
+                            return (
+                                <Route
+                                    key={index}
+                                    path={route.path}
+                                    exact={route.exact}
+                                    render={props => {
+                                        return (
+                                            <MainLayout>
+                                                <route.component {...props} />
+                                            </MainLayout>
+                                        )
+                                    }}
+
+                                />
+                            )
+                        }else{
+                            return  false
+                        }
+
+                    }
+                )
+            }
+
+            {
+                adminRoutes.map((route, index) => {
+                        if(type==='true'){
                             return (
                                 <Route
                                     key={index}

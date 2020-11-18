@@ -1,28 +1,27 @@
-import React,{Component} from 'react';
-import {Nav,Row,Col} from "react-bootstrap";
+import React, {Component} from 'react';
+import {Nav, Row, Col} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
-import {menuItems,commonMenuItems} from '../sidemenu/menuItems'
+// import {menuItems,commonMenuItems} from '../sidemenu/menuItems'
+import {menuItems} from '../sidemenu/menuItems'
+
 import {connect} from "react-redux";
 
 
 class SideMenu extends Component {
-    renderMenuItems = () => {
 
-let adminSideMenuItems,userSideMenuItems,finalmenuItems;
+    renderMenuItems =  () => {
+        const type =  localStorage.getItem('UserType');
+        let adminSideMenuItems, userSideMenuItems, finalmenuItems;
+        adminSideMenuItems = menuItems.filter(menuItem => menuItem.isAdmin === true);
+        userSideMenuItems = menuItems.filter(menuItem => menuItem.isAdmin === false);
+        if(type==='true'){
+            finalmenuItems = [...adminSideMenuItems, ...userSideMenuItems];
+        } else {
+            finalmenuItems = [...userSideMenuItems];
+        }
 
-    adminSideMenuItems = menuItems.filter(menuItem => menuItem.isAdmin === true);
-
-    userSideMenuItems = menuItems.filter(menuItem => menuItem.isAdmin === false);
-
-
-if(localStorage.getItem('UserType') === 'true') {
-    finalmenuItems = [...adminSideMenuItems,...commonMenuItems]
-}else {
-    finalmenuItems = [...userSideMenuItems,...commonMenuItems];
-}
-
-        return finalmenuItems.map( (menuItem,index) => {
-              return  <NavLink
+        return finalmenuItems.map((menuItem, index) => {
+                return <NavLink
                     key={index}
                     style={{padding: "8px 20px", textDecoration: "none", color: "#000000"}}
                     to={menuItem.path}
@@ -51,7 +50,7 @@ if(localStorage.getItem('UserType') === 'true') {
 
     render() {
         return (
-            <div style={{padding:"15px 10px"}}>
+            <div style={{padding: "15px 10px"}}>
                 <Nav variant="pills" className="flex-column">
                     {this.renderMenuItems()}
                 </Nav>
@@ -61,10 +60,10 @@ if(localStorage.getItem('UserType') === 'true') {
 }
 
 
-const mapStateToProps = (state) =>{
+const mapStateToProps = (state) => {
     return {
-        login:state
+        login: state
     }
 }
 
-export default connect (mapStateToProps) (SideMenu);
+export default connect(mapStateToProps)(SideMenu);

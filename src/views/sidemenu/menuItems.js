@@ -16,7 +16,7 @@ export const menuItems = [
         path:"/userdetails",
         name:"User Details",
         subText:"List of all Details in the school",
-        isAdmin:false
+        isAdmin:true
 
     },
     {
@@ -24,19 +24,27 @@ export const menuItems = [
         path:"/register",
         name:"Register",
         subText:"Upload all details and bulk upload",
-        isAdmin:true
+        isAdmin:false
+    },
+    {
+        icon:settingsIcon,
+        path:"/settings",
+        name:"Settings",
+        subText:"Other settings",
+        isAdmin:false
+
     }
 
 
 ];
 
-export const commonMenuItems = [
-    {
-    icon:settingsIcon,
-    path:"/settings",
-    name:"Settings",
-    subText:"Other settings",
-    isAdmin:false
-
-}
-]
+// export const commonMenuItems = [
+//     {
+//     icon:settingsIcon,
+//     path:"/settings",
+//     name:"Settings",
+//     subText:"Other settings",
+//     isAdmin:false
+//
+// }
+// ]

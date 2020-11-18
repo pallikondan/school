@@ -7,6 +7,16 @@ import settings from "../../views/pages/settings/settings";
 
 export const defaultRoute = '/listschool',
 
+    adminRouter = [
+        {
+            path: `/userdetails`,
+            name: 'User Details',
+            component: UserDetailsPage,
+            exact: true,
+        },
+    ],
+
+
     dashboardRouter = [
         {
             path: `${defaultRoute}`,
@@ -17,15 +27,10 @@ export const defaultRoute = '/listschool',
         {
             path: `/register`,
             name: 'Register New School',
-            component: UserModal,
+            component: RegisterSchoolModal,
             exact: true,
         },
-        {
-            path: `/userdetails`,
-            name: 'User Details',
-            component: UserDetailsPage,
-            exact: true,
-        },
+
         {
             path: `/settings`,
             name: 'Settings',

@@ -10,6 +10,7 @@ import {connect} from "react-redux";
 
 const logout = (history) =>{
     removeAuthToken();
+    localStorage.removeItem('UserType');
     history.push("login");
 
 };
