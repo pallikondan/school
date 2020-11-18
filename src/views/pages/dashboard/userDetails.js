@@ -82,7 +82,7 @@ class UserDetails extends Component {
 const mapStateToProps = (state) => {
     return {
         memberList: state.School.memberList.list,
-        loginData: state.login.profile
+        loginData: state.login
 
     }
 }
