@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import {getSchoolListRequest, getSchoolListSuccess, getSchoolListFailure, getMemberSuccess,getMemberFailure} from '../actions/school';
-import {fetchSchoolList,registerSchoolAPI,fetchMemberList, registerMultipleSchoolAPI} from '../services';
+import {fetchSchoolList,registerSchoolAPI,fetchMemberListService, registerMultipleSchoolAPI} from '../services';
 import { reducerTypes } from '../constants/index'
 
 const {schoolConstants} = reducerTypes;
@@ -19,10 +19,9 @@ export  function*  fetchSchoolUsersList(action) {
   }
 
   export  function* fetchMembersList(action) {
-
     const { payload } = action;
-    const response = []
-    const result =  yield call(fetchMemberList, payload);
+    //const response = []
+    const {response} =  yield call(fetchMemberListService, payload);
     if (response) {
 
         yield put(getMemberSuccess(response));
@@ -61,7 +60,7 @@ export  function*  registerMultipleSchool(action) {
   export function *schoolWatcher() {
     yield takeLatest(
       schoolConstants.GET_MEMBER_LIST_REQUEST,
-      fetchMemberList
+      fetchMembersList
   );
     yield takeLatest(
         schoolConstants.GET_SCHOOL_LIST_REQUEST,
