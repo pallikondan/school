@@ -148,7 +148,7 @@ const  UserModal = (props) => {
 
     return (
         <>
-            <Modal show={show} size={'xl'} centered dialogClassName='modal-dialog' onHide={handleClose}>
+            <Modal onEscapeKeyDown={props.onClose} show={show} size={'xl'} centered dialogClassName='modal-dialog' onHide={handleClose}>
                 <Modal.Header bsPrefix={'pad_2'}>
                     {props.type==='edit'?<Modal.Title bsPrefix={'font-small font-medium'}>Edit User</Modal.Title>:<Modal.Title bsPrefix={'font-small font-medium'}>Register New User</Modal.Title>}
                     <hr className={'modal-dotted'}/>

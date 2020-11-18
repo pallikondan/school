@@ -18,7 +18,9 @@ class UserDetails extends Component {
     }
 
     handleModalClose = () => {
-        this.setState({showUserModal:false})
+        this.setState({showUserModal:false});
+        this.props.history.push('userdetails');
+
     };
 
     render () {
@@ -32,8 +34,8 @@ class UserDetails extends Component {
             <Row className={'mar_pad_0'}>
                 <Col className={'mar_pad_0'}>
                     <h3>Show User List Grid  Here</h3>
-                    <h3 onClick={()=>{this.setState({showUserModal:true,modalType:'new'})}}>Click to open add user modal</h3>
-                    <h3 onClick={()=>{this.setState({showUserModal:true,modalType:'edit'})}}>Click to open edit user modal</h3>
+                    <button onClick={()=>{this.setState({showUserModal:true,modalType:'new'})}}>Click to open add user modal</button>
+                    <button onClick={()=>{this.setState({showUserModal:true,modalType:'edit'})}}>Click to open edit user modal</button>
                     {this.state.showUserModal ? <UserModal show={this.state.showUserModal} onClose={this.handleModalClose} userDetails={this.state.userDetails}  type={this.state.modalType} /> : "" }
 
                 </Col>
