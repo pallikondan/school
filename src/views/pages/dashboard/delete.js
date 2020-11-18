@@ -28,10 +28,10 @@ export default function DeleteModal() {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Deactivate Modal"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"Delete User"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Are you sure, want to deactivate selected record.
+            Are you sure? want to delete selected record.
           </DialogContentText>
         </DialogContent>
         <DialogActions>

@@ -12,8 +12,8 @@ import {getMemberRequest} from '../../../store/actions/school'
 export const ActionsIcons = () => {
     return(
         <div style={{display: "flex"}}>
-            <EditModal></EditModal>
-            <DeleteModal></DeleteModal>
+            <EditModal/>
+            <DeleteModal/>
         </div>
     )
 }
@@ -39,7 +39,6 @@ class UserDetails extends Component {
     };
 
     render () {
-
         const memberKeys = [
             { key: 'name', columnName: 'School Name', type: 'school_name', form: false, required: false, visible: true, value: true },
             { key: 'address', columnName: 'Address', type: 'address', form: false, required: false, visible: true, value: true },
@@ -53,8 +52,10 @@ class UserDetails extends Component {
             {
                 key: 'action', columnName: 'Actions', label: 'Actions', render: (value, record) => (
                     <div style={{display: "flex"}}>
-            <EditModal openModal={()=>{this.setState({showUserModal:true,modalType:'edit'})}}></EditModal>
-            <DeleteModal></DeleteModal>
+            <EditModal openModal={() => {
+    this.setState({showUserModal: true, modalType: 'edit'})
+}}/>
+            <DeleteModal/>
         </div>
                     
                 ),visible: true, form: false
@@ -70,8 +71,6 @@ class UserDetails extends Component {
             <Row className={'mar_pad_0'}>
                 <Col className={'mar_pad_0'}>
                     <UserDataTable fields = {memberKeys} data={this.props.memberList}/>
-                    <button onClick={()=>{this.setState({showUserModal:true,modalType:'new'})}}>Click to open add user modal</button>
-                    <button onClick={()=>{this.setState({showUserModal:true,modalType:'edit'})}}>Click to open edit user modal</button>
                     {this.state.showUserModal ? <UserModal show={this.state.showUserModal} onClose={this.handleModalClose} userDetails={this.state.userDetails}  type={this.state.modalType} /> : "" }
 
                 </Col>
