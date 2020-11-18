@@ -1,4 +1,4 @@
-import { applyMiddleware, createStore } from 'redux'
+import { applyMiddleware, createStore, compose } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import { logger } from 'redux-logger'
 import RootReducer from './reducers'
@@ -13,11 +13,10 @@ const composeEnhancers = composeWithDevTools({});
 
    const store = createStore(
         // Other reducer
-       RootReducer(history),
-       composeEnhancers(applyMiddleware(
-           sagaMiddleware,
-           routerMiddleware(history),
-           logger
+       RootReducer,
+       {},
+       compose(applyMiddleware(
+           sagaMiddleware
        ))
     );
 

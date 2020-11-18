@@ -10,7 +10,7 @@ export const fetchSchoolList = data => {
       .catch(({ data }) => ({ error: data }));
   };
 
-  export const fetchMemberList = data => {
+  export const fetchMemberListService = data => {
     return request({
       url: 'schooluser/?school=1',
       method: 'get',
