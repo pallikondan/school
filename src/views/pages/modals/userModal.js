@@ -5,7 +5,6 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import IconButton from "@material-ui/core/IconButton";
 import {connect} from 'react-redux';
 import {registerSchool, registerMultipleSchoolRequest} from  '../../../store/actions/school'
-import {Alert} from "react-bootstrap";
 import XLSX from 'xlsx';
 import DeleteIcon from "../../../assets/edit_ic.png"
 
@@ -17,7 +16,6 @@ const  UserModal = (props) => {
     const [bulkUploadData, setBulkData] = useState([]);
     const [imageLogo, setImageLogo] = useState('');
     const [bulkFile, setbulkFile] = useState('');
-    const imageUploadRef = useRef(null);
     const fileUploadRef = useRef(null);
     const [isAlertType,setIsAlertType] = useState({isOpen:true,type:'success',message:'success / error will show here'});
 
@@ -89,10 +87,7 @@ const  UserModal = (props) => {
         }
     };
 
-    const handleImageBtnClick = () => {
-        /*Collecting node-element and performing click*/
-        imageUploadRef.current.click();
-    };
+
     const handleFileBtnClick = () => {
         /*Collecting node-element and performing click*/
         fileUploadRef.current.click();

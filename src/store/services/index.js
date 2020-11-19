@@ -52,3 +52,14 @@ export const registerMultipleSchoolAPI = data => {
       }
   })
 };
+
+export const deleteUserAPI = data => {
+    return request({
+        url: 'user/',
+        method: 'delete',
+        data,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+};

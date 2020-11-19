@@ -4,7 +4,7 @@ import TopBreadCrumb from "../../partials/breadcrumb";
 import schoolListIcon from "../../../assets/School_list_ic.png";
 import {Col, Row} from "react-bootstrap";
 import UserModal from "../modals/userModal";
-import DeleteModal from './delete'
+import UserDeleteModal from "../modals/UserDeleteModal";
 import EditModal from '../modals/userModal';
 import UserDataTable from './StudentList';
 import {getMemberRequest} from '../../../store/actions/school'
@@ -13,7 +13,7 @@ export const ActionsIcons = () => {
     return(
         <div style={{display: "flex"}}>
             <EditModal/>
-            <DeleteModal/>
+            <UserDeleteModal/>
         </div>
     )
 }
@@ -55,7 +55,7 @@ class UserDetails extends Component {
             <EditModal openModal={() => {
     this.setState({showUserModal: true, modalType: 'edit'})
 }}/>
-            <DeleteModal/>
+                        <UserDeleteModal/>
         </div>
                     
                 ),visible: true, form: false

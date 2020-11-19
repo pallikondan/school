@@ -57,3 +57,18 @@ export const registerMultipleSchoolSuccess = (data) => ({
 export const registerMultipleSchoolFailure = () => ({
     type: schoolConstants.REGISTER_MULTIPLE_SCHOOL_FAILURE
 })
+
+export const deleteUserRequest = (data) => ({
+    type: schoolConstants.DELETE_USER_REQUEST,
+    payload:data
+})
+
+export const deleteUserSuccess = (data) => ({
+    type: schoolConstants.DELETE_USER_SUCCESS,
+    payload:data
+})
+
+export const deleteUserFailure = (data) => ({
+    type: schoolConstants.DELETE_USER_FAILURE,
+    payload:data
+})

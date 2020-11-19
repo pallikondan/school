@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import {getSchoolListRequest, getSchoolListSuccess, getSchoolListFailure, getMemberSuccess,getMemberFailure} from '../actions/school';
-import {fetchSchoolList,registerSchoolAPI,fetchMemberListService, registerMultipleSchoolAPI} from '../services';
+import {fetchSchoolList,registerSchoolAPI,fetchMemberListService, registerMultipleSchoolAPI,deleteUserAPI} from '../services';
 import { reducerTypes } from '../constants/index'
 
 const {schoolConstants} = reducerTypes;
@@ -57,6 +57,20 @@ export  function*  registerMultipleSchool(action) {
 
 }
 
+
+export  function*  deleteUser(action) {
+    // const { payload } = action;
+    console.log('from delete sagaaaaa', action)
+    // try{
+    //     const { response, error } =  yield  call(deleteUserAPI, payload);
+    //     // success trigger here
+    //
+    // }catch (e) {
+    //     console.log("error in api",e)
+    // }
+
+}
+
   export function *schoolWatcher() {
     yield takeLatest(
       schoolConstants.GET_MEMBER_LIST_REQUEST,
@@ -73,7 +87,12 @@ export  function*  registerMultipleSchool(action) {
       yield takeLatest(
         schoolConstants.REGISTER_MULTIPLE_SCHOOL_REQUEST,
         registerMultipleSchool
-    )
+    );
+
+      yield takeLatest(
+          schoolConstants.DELETE_USER_REQUEST,
+          deleteUser
+      )
 }
 
 
