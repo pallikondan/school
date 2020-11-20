@@ -6,6 +6,7 @@ import {Col, Row} from "react-bootstrap";
 import UserModal from "../modals/userModal";
 import UserDeleteModal from "../modals/UserDeleteModal";
 import EditModal from '../modals/userModal';
+import DeleteModal from './delete'
 import UserDataTable from './StudentList';
 import {getMemberRequest} from '../../../store/actions/school'
 
@@ -17,6 +18,8 @@ export const ActionsIcons = () => {
         </div>
     )
 }
+//import EditModal from '../modals/userModal';
+
 
 class UserDetails extends Component {
 
@@ -52,10 +55,8 @@ class UserDetails extends Component {
             {
                 key: 'action', columnName: 'Actions', label: 'Actions', render: (value, record) => (
                     <div style={{display: "flex"}}>
-            <EditModal openModal={() => {
-    this.setState({showUserModal: true, modalType: 'edit'})
-}}/>
-                        <UserDeleteModal/>
+            <UserModal userDetails={this.state.userDetails} ></UserModal>
+            <DeleteModal></DeleteModal>
         </div>
                     
                 ),visible: true, form: false
@@ -71,7 +72,9 @@ class UserDetails extends Component {
             <Row className={'mar_pad_0'}>
                 <Col className={'mar_pad_0'}>
                     <UserDataTable fields = {memberKeys} data={this.props.memberList}/>
-                    {this.state.showUserModal ? <UserModal show={this.state.showUserModal} onClose={this.handleModalClose} userDetails={this.state.userDetails}  type={this.state.modalType} /> : "" }
+                    {/* <button onClick={()=>{this.setState({showUserModal:true,modalType:'new'})}}>Click to open add user modal</button>
+                    <button onClick={()=>{this.setState({showUserModal:true,modalType:'edit'})}}>Click to open edit user modal</button>
+                    {this.state.showUserModal ? <UserModal show={this.state.showUserModal} onClose={this.handleModalClose} userDetails={this.state.userDetails}  type={this.state.modalType} /> : "" } */}
 
                 </Col>
             </Row>

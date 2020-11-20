@@ -6,12 +6,13 @@ import IconButton from "@material-ui/core/IconButton";
 import {connect} from 'react-redux';
 import {registerSchool, registerMultipleSchoolRequest} from  '../../../store/actions/school'
 import {Alert} from "react-bootstrap";
-import XLSX from 'xlsx'
+import XLSX from 'xlsx';
+import EditIcon from '../../../assets/edit_ic.png'
 
 
 const  SchoolModal = (props) => {
-    const handleShow = () => setShow(true);
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(false);
+    const [modalType, setModalType] = useState(false);
     const [logo, setLogo] = useState('');
     const [bulkUpload, enableBulkUpload] = useState(false);
     const [bulkUploadData, setBulkData] = useState([]);
@@ -142,10 +143,11 @@ const  SchoolModal = (props) => {
 
 
     return (
-        <>
+        <div style={{marginRight: '8px'}}>
+        <img alt="" className="h-over" src={EditIcon} width="25" onClick={()=>{ setShow(true); setModalType('edit')}}/>
             <Modal show={show} size={'xl'} centered dialogClassName='modal-dialog' onHide={handleClose}>
                 <Modal.Header bsPrefix={'pad_2'}>
-                    <Modal.Title bsPrefix={'font-small font-medium'}>Register New School</Modal.Title>
+                    <Modal.Title bsPrefix={'font-small font-medium'}>{modalType === 'edit' ? 'Edit Scholl' : 'Register New School'}</Modal.Title>
                     <hr className={'modal-dotted'}/>
                 </Modal.Header>
                 <Form >
@@ -231,6 +233,8 @@ const  SchoolModal = (props) => {
                                     </Form.Group>
                                 </Col>
                             </Row>
+                            {
+                                modalType !== 'edit' ?
                             <Row>
                                 <Col>
                                     <hr className={'modal-dotted'}/>
@@ -275,7 +279,8 @@ const  SchoolModal = (props) => {
                                         </Col>
                                     </Row>
                                 </Col>
-                            </Row>
+                            </Row> : null
+}
                             <Row>
                                 <Col>
                                     <hr className={'modal-dotted'}/>
@@ -301,7 +306,7 @@ const  SchoolModal = (props) => {
                     </Modal.Footer>
                 </Form>
             </Modal>
-        </>
+        </div>
     );
 };
 

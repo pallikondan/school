@@ -6,20 +6,12 @@ import { Button } from '@material-ui/core';
 import { Edit, Delete } from '@material-ui/icons';
 import classNames from 'classnames';
 import DeleteModal from './delete'
-import EditModal from './editrecord';
+import EditModal from '../modals/schoolModal';
 import {getSchoolListRequest, getMemberRequest} from '../../../store/actions/school'
 import {connect } from 'react-redux';
 import schoolListIcon from "../../../assets/School_list_ic.png";
 
 
-
-export const EditButton = ({ className, size, ...props }) => {
-    return <Button style={{minWidth: 100}} className={classNames(className)} size={size || "small"} color="primary" variant="outlined" {...props}><Edit className="mr-1" fontSize="small" /> {props.label || "Button"}</Button>
-}
-
-export const DeleteButton = ({ className, size, ...props }) => {
-    return <Button style={{minWidth: 100}} className={classNames(className)} size={size || "small"} variant="outlined" {...props}><Delete className="mr-1" fontSize="small" /> {props.label || "Button"}</Button>
-}
 
 export const ActionsIcons = () => {
     return(
@@ -57,10 +49,14 @@ class DashboardPage extends Component {
         { key: 'location', columnName: 'Location', type: 'location', form: false, required: false, visible: true, value: true },
         { key: 'admin_username', columnName: 'User Name', type: 'admin_username', form: false, required: false, visible: true, value: true },
         {
-            key: 'action', columnName: 'Actions', label: 'Actions', render: (value, record) => (
-                <ActionsIcons/>
-                
-            ),visible: true, form: false
+            key: 'action', columnName: 'Actions', label: 'Actions', render: (value, record) => {
+                return(
+                    <div style={{display: "flex"}}>
+                        <EditModal schollDetails={record}></EditModal>
+                        <DeleteModal></DeleteModal>
+                    </div>      
+                )
+            }, visible: true, form: false
         }
     ]
     return (
