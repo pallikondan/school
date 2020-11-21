@@ -6,7 +6,7 @@ import IconButton from "@material-ui/core/IconButton";
 import {connect} from 'react-redux';
 import {registerSchool, registerMultipleSchoolRequest} from  '../../../store/actions/school'
 import XLSX from 'xlsx';
-import DeleteIcon from "../../../assets/edit_ic.png"
+import EditIcon from "../../../assets/edit_ic.png"
 
 
 const  UserModal = (props) => {
@@ -144,7 +144,7 @@ const  UserModal = (props) => {
 
     return (
         <div style={{marginRight: '8px'}}>
-         <img alt="" className="h-over" src={DeleteIcon} width="25" onClick={props.openModal}/>
+         <img alt="" className="h-over" src={EditIcon} width="25" onClick={props.openModal}/>
             <Modal onEscapeKeyDown={props.onClose} show={show} size={'xl'} centered dialogClassName='modal-dialog' onHide={handleClose}>
                 <Modal.Header bsPrefix={'pad_2'}>
                     {props.type==='edit'?<Modal.Title bsPrefix={'font-small font-medium'}>Edit User</Modal.Title>:<Modal.Title bsPrefix={'font-small font-medium'}>Register New User</Modal.Title>}

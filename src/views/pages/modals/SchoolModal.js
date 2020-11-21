@@ -7,11 +7,11 @@ import {connect} from 'react-redux';
 import {registerSchool, registerMultipleSchoolRequest} from  '../../../store/actions/school'
 import {Alert} from "react-bootstrap";
 import XLSX from 'xlsx'
+import EditIcon from "../../../assets/edit_ic.png";
 
 
 const  SchoolModal = (props) => {
-    const handleShow = () => setShow(true);
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(props.show);
     const [logo, setLogo] = useState('');
     const [bulkUpload, enableBulkUpload] = useState(false);
     const [bulkUploadData, setBulkData] = useState([]);
@@ -131,21 +131,16 @@ const  SchoolModal = (props) => {
         setbulkFile(file);
     };
 
-    // useEffect(()=>{
-    //     if(props.School.success){
-    //         setIsAlertType({isOpen:true,type:'success',message: 'School Added Successfully'});
-    //     }else{
-    //         setIsAlertType({isOpen:true,type:'danger',message: 'Error in Adding School, Please Try again'});
-    //     }
-    //
-    // },[props.School.success]);
 
 
     return (
         <>
-            <Modal show={show} size={'xl'} centered dialogClassName='modal-dialog' onHide={handleClose}>
+            <div style={{marginRight: '8px'}}>
+                <img alt="edit_icon" className="h-over" src={EditIcon} width="25" onClick={props.openModal}/>
+
+                <Modal onEscapeKeyDown={props.onClose} show={show} size={'xl'} centered dialogClassName='modal-dialog' onHide={handleClose}>
                 <Modal.Header bsPrefix={'pad_2'}>
-                    <Modal.Title bsPrefix={'font-small font-medium'}>Register New School</Modal.Title>
+                    {props.type==='edit'?<Modal.Title bsPrefix={'font-small font-medium'}>Edit School</Modal.Title>:<Modal.Title bsPrefix={'font-small font-medium'}>Register New School</Modal.Title>}
                     <hr className={'modal-dotted'}/>
                 </Modal.Header>
                 <Form >
@@ -231,6 +226,9 @@ const  SchoolModal = (props) => {
                                     </Form.Group>
                                 </Col>
                             </Row>
+
+                            {props.type !== 'edit' ?
+
                             <Row>
                                 <Col>
                                     <hr className={'modal-dotted'}/>
@@ -275,7 +273,7 @@ const  SchoolModal = (props) => {
                                         </Col>
                                     </Row>
                                 </Col>
-                            </Row>
+                            </Row> : "" }
                             <Row>
                                 <Col>
                                     <hr className={'modal-dotted'}/>
@@ -294,13 +292,18 @@ const  SchoolModal = (props) => {
                                     variant="outline" onClick={handleClose}>
                                 Cancel
                             </Button>
-                            <Button onClick={handleSubmission} className={'font-extra-small btn-blue'} >
-                                Register
-                            </Button>
+                            {props.type==="edit" ?  <Button onClick={handleSubmission} className={'font-extra-small btn-blue'} >
+                                    Edit School
+                                </Button> :
+                                <Button onClick={handleSubmission} className={'font-extra-small btn-blue'} >
+                                    Register School
+                                </Button>
+                            }
                         </div>
                     </Modal.Footer>
                 </Form>
             </Modal>
+            </div>
         </>
     );
 };

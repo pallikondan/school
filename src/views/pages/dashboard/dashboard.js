@@ -5,11 +5,13 @@ import StudentLists from './StudentList';
 import { Button } from '@material-ui/core';
 import { Edit, Delete } from '@material-ui/icons';
 import classNames from 'classnames';
-import DeleteModal from './delete'
-import EditModal from './editrecord';
+import SchoolModal from "../modals/SchoolModal";
+
 import {getSchoolListRequest, getMemberRequest} from '../../../store/actions/school'
 import {connect } from 'react-redux';
 import schoolListIcon from "../../../assets/School_list_ic.png";
+import UserDeleteModal from "../modals/UserDeleteModal";
+import UserModal from "../modals/userModal";
 
 
 
@@ -21,30 +23,30 @@ export const DeleteButton = ({ className, size, ...props }) => {
     return <Button style={{minWidth: 100}} className={classNames(className)} size={size || "small"} variant="outlined" {...props}><Delete className="mr-1" fontSize="small" /> {props.label || "Button"}</Button>
 }
 
-export const ActionsIcons = () => {
-    return(
-        <div style={{display: "flex"}}>
-            <EditModal></EditModal>
-            <DeleteModal></DeleteModal>
-        </div>
-    )
-}
 
 
 
 class DashboardPage extends Component {
-    // componentDidMount() {
-    //     if(localStorage.getItem('UserType') === 'false') {
-    //         this.props.getMemberRequest()
-    //     } else {
-    //         this.props.getSchoolListRequest()
-    //     }
-    // }
+
+    constructor() {
+        super();
+        this.state={
+            showSchoolModal : false,
+            modalType:'new',
+            schoolDetails:{}
+        }
+    }
+
 
     componentDidMount() {
         this.props.getSchoolListRequest()
     }
-    
+
+    handleModalClose = () => {
+        this.setState({showSchoolModal:false});
+        this.props.history.push('listschool');
+
+    };
     
 
     render() {
@@ -58,7 +60,12 @@ class DashboardPage extends Component {
         { key: 'admin_username', columnName: 'User Name', type: 'admin_username', form: false, required: false, visible: true, value: true },
         {
             key: 'action', columnName: 'Actions', label: 'Actions', render: (value, record) => (
-                <ActionsIcons/>
+                <div style={{display: "flex"}}>
+                    <SchoolModal openModal={() => {
+                        this.setState({showSchoolModal: true, modalType: 'edit'})
+                    }}/>
+                    <UserDeleteModal/>
+                </div>
                 
             ),visible: true, form: false
         }
@@ -71,18 +78,15 @@ class DashboardPage extends Component {
                 </Col>
             </Row>
             {
-                // localStorage.getItem('UserType') === 'false' ?
-                // <StudentLists
-                // fields = {memberKeys}
-                // data = {memberData}
-                // />
-                // :
                 <StudentLists
                 fields = {fields}
                 data = {props.schoolList}
                 />
+
             }
-          
+            {this.state.showSchoolModal ? <SchoolModal show={this.state.showSchoolModal} onClose={this.handleModalClose} userDetails={this.state.schoolDetails}  type={this.state.modalType} /> : "" }
+
+
         </Fragment>
 
     )
