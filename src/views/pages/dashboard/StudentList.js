@@ -229,6 +229,7 @@ const StudentLists = ({ fields = [], data = [], initialSort = "", searchQuery = 
   const [orderBy, setOrderBy] = useState(initialSort);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(rowOnePage);
+  const [selectedRecord, setSelectedRecord] = useState({})
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -245,6 +246,7 @@ const StudentLists = ({ fields = [], data = [], initialSort = "", searchQuery = 
 
   const handleClick = (event, name) => {
     const selectedIndex = props.selectedRecords.findIndex(val => val.id === name.id);
+    console.log('selectedindexxxx', selectedIndex)
     let newSelected = [];
 
     if (radio) {
@@ -347,10 +349,12 @@ const StudentLists = ({ fields = [], data = [], initialSort = "", searchQuery = 
                       </TableCell> */}
                       {
                         (fields.filter(x => x.visible)).map(field => (
-                          <TableCell key={field.key} className={classes.tableCell} padding={field.padding? "checkbox": "default"} align="left">
+                          <TableCell key={field.key} onClick={typeof field.render === 'function' ? () => {
+                            setSelectedRecord(record)
+                          }: null} className={classes.tableCell} padding={field.padding? "checkbox": "default"} align="left">
                             {
                               (field.render && typeof field.render === 'function') ? (
-                                field.render(record[field.key], record, index)
+                                field.render(record[field.key], selectedRecord, index)
                               ) : record[field.key]
                             }
                           </TableCell>

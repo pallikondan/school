@@ -6,11 +6,12 @@ import IconButton from "@material-ui/core/IconButton";
 import {connect} from 'react-redux';
 import {registerSchool, registerMultipleSchoolRequest} from  '../../../store/actions/school'
 import XLSX from 'xlsx';
-import EditIcon from "../../../assets/edit_ic.png"
+import DeleteIcon from "../../../assets/edit_ic.png"
 
 
 const  UserModal = (props) => {
-    const [show, setShow] = useState(props.show);
+    const [show, setShow] = useState(false);
+    const [modalType, setModalType] = useState(false);
     const [logo, setLogo] = useState('');
     const [bulkUpload, enableBulkUpload] = useState(false);
     const [bulkUploadData, setBulkData] = useState([]);
@@ -141,16 +142,15 @@ const  UserModal = (props) => {
     //
     // },[props.School.success]);
 
-
     return (
         <div style={{marginRight: '8px'}}>
-         <img alt="" className="h-over" src={EditIcon} width="25" onClick={props.openModal}/>
-            <Modal onEscapeKeyDown={props.onClose} show={show} size={'xl'} centered dialogClassName='modal-dialog' onHide={handleClose}>
+         <img alt="" className="h-over" src={DeleteIcon} width="25" onClick={() => {setShow(true); setModalType('edit')}}/>
+            <Modal show={show} size={'xl'} centered dialogClassName='modal-dialog' onHide={handleClose}>
                 <Modal.Header bsPrefix={'pad_2'}>
-                    {props.type==='edit'?<Modal.Title bsPrefix={'font-small font-medium'}>Edit User</Modal.Title>:<Modal.Title bsPrefix={'font-small font-medium'}>Register New User</Modal.Title>}
+                    {modalType==='edit'?<Modal.Title bsPrefix={'font-small font-medium'}>Edit User</Modal.Title>:<Modal.Title bsPrefix={'font-small font-medium'}>Register New User</Modal.Title>}
                     <hr className={'modal-dotted'}/>
                 </Modal.Header>
-                <Form >
+                <Form>
                     <Modal.Body>
                         <Container>
                             <Row>
@@ -282,7 +282,7 @@ const  UserModal = (props) => {
                         </div> */}
                         <div className={'modal-footer'}>
                             <Button style={{border: "1px solid gray"}} className={'font-black font-extra-small'}
-                                    variant="outline" onClick={props.onClose}>
+                                    variant="outline" onClick={handleClose}>
                                 Cancel
                             </Button>
                             {props.type==="edit" ?  <Button onClick={handleSubmission} className={'font-extra-small btn-blue'} >
