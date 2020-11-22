@@ -23,14 +23,14 @@ import {connect} from "react-redux";
 
     return (
         <div>
-            <img className="h-over" src={deleteIcon} sizes="25" onClick={handleClickOpen}/>
+            <img alt={'delete_icon'} className="h-over" src={deleteIcon} sizes="25" onClick={handleClickOpen}/>
             <Dialog
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-                <DialogTitle id="alert-dialog-title">{"Delete User"}</DialogTitle>
+                {props.type==='user' ?  <DialogTitle id="alert-dialog-title">{"Delete User"}</DialogTitle> :  <DialogTitle id="alert-dialog-title">{"Delete School"}</DialogTitle> }
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
                         Are you sure? want to delete selected record.
@@ -40,9 +40,7 @@ import {connect} from "react-redux";
                     <Button onClick={handleClose} color="primary">
                         Cancel
                     </Button>
-                    <Button onClick={()=>{props.deleteUserRequest("")}} color="primary" autoFocus>
-                        Submit
-                    </Button>
+                    {props.type==='user' ? <Button onClick={()=>{props.deleteUserRequest("")}} color="primary" autoFocus>Submit</Button> :  <Button onClick={()=>{props.deleteUserRequest("")}} color="primary" autoFocus>Submit</Button>  }
                 </DialogActions>
             </Dialog>
         </div>
