@@ -50,13 +50,12 @@ const LoginPage = (props) => {
                                         <span className={'font-medium font-black font-sub-headding'}>Log in to your account.</span>
                                     </div>
                                     <div className={'mar_top_5'}>
-                                        <form>
+                                      
                                         <TextField error={props.login.error} autoComplete={'on'}  id="username" label="Email Id" margin="normal" value={credentials.username} onChange={handleUserinput}
                                                    InputLabelProps={{shrink: true,}} fullWidth={true}/>
                                         <TextField error={props.login.error}  autoComplete={'on'}  id="password" label="Password" margin="normal" value={credentials.password} onChange={handleUserinput}
                                                    InputLabelProps={{shrink: true,}} type={'password'}
                                                    fullWidth={true}/>
-                                        </form>
                                     </div>
                                     <div style={{textAlign: "right"}}>
                                         <a href="#" className={'font-regular font-gray font-small'}>Forgot Password?</a>

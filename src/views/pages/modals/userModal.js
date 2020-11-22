@@ -221,7 +221,7 @@ const  UserModal = (props) => {
                                 </Col>
                             </Row>
                             <Row>
-                                {props.type !== 'edit' ?
+                                {modalType !== 'edit' ?
                                     <Col>
                                     <hr className={'modal-dotted'}/>
                                     <p>OR</p>

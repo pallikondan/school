@@ -55,7 +55,7 @@ class UserDetails extends Component {
             {
                 key: 'action', columnName: 'Actions', label: 'Actions', render: (value, record) => (
                     <div style={{display: "flex"}}>
-            <UserModal userDetails={this.state.userDetails} ></UserModal>
+            <UserModal userDetails={record} ></UserModal>
             <DeleteModal></DeleteModal>
         </div>
                     
