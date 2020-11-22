@@ -23,6 +23,7 @@ function *loginSaga(action) {
             action.payload.props.history.push('listschool')
            // yield put(hideLoading());
             yield put(loginSuccess(res));
+            yield setAuthToken(res.data.response.token);
             localStorage.setItem('UserType', res.data.response.is_staff);
         }
 
