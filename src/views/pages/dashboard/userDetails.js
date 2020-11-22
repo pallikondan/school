@@ -58,7 +58,7 @@ class UserDetails extends Component {
         <>
             <Row className={'mar_pad_0'}>
                 <Col className={'mar_pad_0'}>
-                    <TopBreadCrumb name={"User's List"} icon={schoolListIcon} isSearch={true} bread={this.props}/>
+                    <TopBreadCrumb name={"Member's List"} icon={schoolListIcon} isSearch={true} bread={this.props}/>
                 </Col>
             </Row>
             <Row className={'mar_pad_0'}>
