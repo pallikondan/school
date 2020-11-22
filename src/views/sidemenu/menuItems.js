@@ -15,8 +15,8 @@ export const menuItems = [
     {
         icon:schoolListIcon,
         path:"/userdetails",
-        name:"User Details",
-        subText:"List of all Details in the school",
+        name:"Member Details",
+        subText:"List of all member details in the school",
         isAdmin:true
 
     },

@@ -148,7 +148,7 @@ const  UserModal = (props) => {
          <img alt="" className="h-over" src={DeleteIcon} width="25" onClick={() => {setShow(true); setModalType('edit')}}/>
             <Modal show={show} size={'xl'} centered dialogClassName='modal-dialog' onHide={handleClose}>
                 <Modal.Header bsPrefix={'pad_2'}>
-                    {modalType==='edit'?<Modal.Title bsPrefix={'font-small font-medium'}>Edit User</Modal.Title>:<Modal.Title bsPrefix={'font-small font-medium'}>Register New User</Modal.Title>}
+                    {modalType==='edit'?<Modal.Title bsPrefix={'font-small font-medium'}>Edit Member</Modal.Title>:<Modal.Title bsPrefix={'font-small font-medium'}>Register New Member</Modal.Title>}
                     <hr className={'modal-dotted'}/>
                 </Modal.Header>
                 <Form>
@@ -314,10 +314,10 @@ const  UserModal = (props) => {
                                 Cancel
                             </Button>
                             {modalType==="edit" ?  <Button onClick={handleSubmission} className={'font-extra-small btn-blue'} >
-                                    Edit User
+                                    Edit Member
                                 </Button> :
                             <Button onClick={handleSubmission} className={'font-extra-small btn-blue'} >
-                                Register User
+                                Register Member
                             </Button>
                             }
                         </div>
