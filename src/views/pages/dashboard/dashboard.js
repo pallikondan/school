@@ -6,7 +6,7 @@ import { Button } from '@material-ui/core';
 import { Edit, Delete } from '@material-ui/icons';
 import classNames from 'classnames';
 import DeleteModal from './delete'
-import EditModal from '../modals/schoolModal';
+import EditModal from '../modals/SchoolModal';
 import {getSchoolListRequest, getMemberRequest} from '../../../store/actions/school'
 import {connect } from 'react-redux';
 import schoolListIcon from "../../../assets/School_list_ic.png";
