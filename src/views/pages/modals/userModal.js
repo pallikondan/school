@@ -11,7 +11,7 @@ import DeleteIcon from "../../../assets/edit_ic.png"
 
 const  UserModal = (props) => {
     const [show, setShow] = useState(false);
-    const [modalType, setModalType] = useState(false);
+    const [modalType, setModalType] = useState('edit');
     const [logo, setLogo] = useState('');
     const [bulkUpload, enableBulkUpload] = useState(false);
     const [bulkUploadData, setBulkData] = useState([]);
@@ -313,7 +313,7 @@ const  UserModal = (props) => {
                                     variant="outline" onClick={handleClose}>
                                 Cancel
                             </Button>
-                            {props.type==="edit" ?  <Button onClick={handleSubmission} className={'font-extra-small btn-blue'} >
+                            {modalType==="edit" ?  <Button onClick={handleSubmission} className={'font-extra-small btn-blue'} >
                                     Edit User
                                 </Button> :
                             <Button onClick={handleSubmission} className={'font-extra-small btn-blue'} >
