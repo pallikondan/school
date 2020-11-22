@@ -2,32 +2,41 @@ import React,{useState} from 'react';
 import {Row, Col, Button} from 'react-bootstrap';
 import {withRouter} from 'react-router-dom'
 import {connect} from "react-redux";
-import {loginToApp} from "../../../store/actions/login";
+import {loginPending} from "../../../store/actions/login";
 import loginThumbnail from '../../../assets/login_vector_ic.png'
 import TextField from '@material-ui/core/TextField';
 import {Alert} from "react-bootstrap";
 import RoundedLogo from "../../../assets/round logo.jpg"
 import './login.css'
-const login = (data,action, history) =>{
-    const loginData = new FormData();
-    loginData.append('username', data.username);
-    loginData.append('password', data.password);
-    action({loginData, history, redirect});
-};
-
-const redirect = (history) => {
-    history.push('listschool')
-}
 
 
-const LoginPage = (props) => {
-    const [credentials,setCredentials] = useState({username:"",password:""});
-    const [isAlertOpen,setIsAlertOpen] = useState(false);
-    const handleUserinput = (e) =>{
-        setIsAlertOpen(false);
-        setCredentials({...credentials,[e.target.id]:e.target.value});
+class Login extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            credentials: {
+                username:"",
+                password:""
+            },
+            isAlertOpen: false
+        }
+    }
+
+    handleUserinput = (e) =>{
+        //setIsAlertOpen(false);
+        this.setState({isAlertOpen: false, credentials: {...this.state.credentials, [e.target.id]: e.target.value}})
+        //setCredentials({...credentials,[e.target.id]:e.target.value});
     };
 
+    login = () =>{
+        const loginData = new FormData();
+        loginData.append('username', this.state.credentials.username);
+        loginData.append('password', this.state.credentials.password);
+        this.props.loginPending({loginData, props:this.props});
+    };
+
+    render() {
         return (
             <React.Fragment>
                 <Col className="side-panel" style={{background: "#35a8fc"}}>
@@ -51,22 +60,22 @@ const LoginPage = (props) => {
                                     </div>
                                     <div className={'mar_top_5'}>
                                       
-                                        <TextField error={props.login.error} autoComplete={'on'}  id="username" label="Email Id" margin="normal" value={credentials.username} onChange={handleUserinput}
+                                        <TextField error={this.props.login.error} autoComplete={'on'}  id="username" label="Email Id" margin="normal" value={this.state.credentials.username} onChange={this.handleUserinput}
                                                    InputLabelProps={{shrink: true,}} fullWidth={true}/>
-                                        <TextField error={props.login.error}  autoComplete={'on'}  id="password" label="Password" margin="normal" value={credentials.password} onChange={handleUserinput}
+                                        <TextField error={this.props.login.error}  autoComplete={'on'}  id="password" label="Password" margin="normal" value={this.state.credentials.password} onChange={this.handleUserinput}
                                                    InputLabelProps={{shrink: true,}} type={'password'}
                                                    fullWidth={true}/>
                                     </div>
                                     <div style={{textAlign: "right"}}>
-                                        <a href="#" className={'font-regular font-gray font-small'}>Forgot Password?</a>
+                                        <a href="#"  alt="" className={'font-regular font-gray font-small'}>Forgot Password?</a>
                                     </div>
                                     <div className={'mar_top_5'}>
-                                        <Button onClick={()=>{login(credentials,props.loginToApp, props.history)}} className={'font-medium font-small'}
+                                        <Button onClick={()=>{this.login()}} className={'font-medium font-small'}
                                                 style={{background: '#3fabf6', border: 0}} size="lg"
                                                 block> Login</Button>
                                     </div>
                                     <br/>
-                                    <Alert show={isAlertOpen} variant={'danger'}>
+                                    <Alert show={this.state.isAlertOpen} variant={'danger'}>
                                         Incorrect Username or Password
                                     </Alert>
                                 </div>
@@ -75,8 +84,9 @@ const LoginPage = (props) => {
                     </div>
                 </Col>
             </React.Fragment>
-        );
+        )
     }
+}
 
 const mapStateToProps = (state) =>{
     return {
@@ -84,4 +94,4 @@ const mapStateToProps = (state) =>{
     }
 }
 
-export default withRouter(connect(mapStateToProps,{loginToApp})(LoginPage))
+export default withRouter(connect(mapStateToProps,{loginPending})(Login))

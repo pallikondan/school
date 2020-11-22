@@ -12,7 +12,7 @@ import EditIcon from '../../../assets/edit_ic.png'
 
 const  SchoolModal = (props) => {
     const [show, setShow] = useState(false);
-    const [modalType, setModalType] = useState(false);
+    const [modalType, setModalType] = useState('');
     const [logo, setLogo] = useState('');
     const [bulkUpload, enableBulkUpload] = useState(false);
     const [bulkUploadData, setBulkData] = useState([]);

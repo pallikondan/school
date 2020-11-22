@@ -12,31 +12,21 @@ const { login } = reducerTypes;
 
 
 function *loginSaga(action) {
-
-    try {
-        yield put(showLoading());
-        yield put(loginPending(true));
+       // yield put(showLoading());
+       // yield put(loginPending(true));
         const res = yield call(
             loginAPI,
             action.payload.loginData
         );
 
         if(res){
-            yield put(hideLoading());
+            action.payload.props.history.push('listschool')
+           // yield put(hideLoading());
             yield put(loginSuccess(res));
             localStorage.setItem('UserType', res.data.response.is_staff);
-            yield setAuthToken(res.data.response.token);
-            setTimeout(() =>{action.payload.redirect(action.payload.history)},1000)
-            yield put(loginPending(false));
-
-
-        }else{
-            yield put(loginError(true));
-            yield put(loginPending(false));
-            yield put(hideLoading());
         }
 
-    } catch (error) {
+    else{
         yield put(loginError(true));
         yield put(loginPending(false));
         yield put(hideLoading())
@@ -51,7 +41,7 @@ function *loginSaga(action) {
 export function *authWatcher() {
 
     yield takeLatest(
-        login.LOGIN,
+        login.LOGIN_PENDING,
         loginSaga
     )
 
