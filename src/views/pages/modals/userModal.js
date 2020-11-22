@@ -21,23 +21,27 @@ const  UserModal = (props) => {
     const [isAlertType,setIsAlertType] = useState({isOpen:true,type:'success',message:'success / error will show here'});
 
     const formInitState = {
-        schoolName:'',
-        userName:'',
-        parentName:'',
-        admissionNo:'',
-        teacherId:'',
-        driver_contact_number:'',
+        school_name:'',
+        name:'',
+        parent_name:'',
+        admission_no:'',
+        teacher_id:'',
+        driver_contact_no:'',
+        bus_driver_name:'',
+        bus_no:'',
         location:'',
         address:'',
         role:''
     };
     const formInitErrorState = {
-        schoolName:false,
-        userName:false,
-        parentName:false,
-        admissionNo:false,
-        teacherId:false,
-        driver_contact_number:false,
+        school_name:false,
+        name:false,
+        parent_name:false,
+        admission_no:false,
+        teacher_id:false,
+        driver_contact_no:false,
+        bus_driver_name:false,
+        bus_no:false,
         location:false,
         address:false,
         role:false
@@ -133,14 +137,11 @@ const  UserModal = (props) => {
         setbulkFile(file);
     };
 
-    // useEffect(()=>{
-    //     if(props.School.success){
-    //         setIsAlertType({isOpen:true,type:'success',message: 'School Added Successfully'});
-    //     }else{
-    //         setIsAlertType({isOpen:true,type:'danger',message: 'Error in Adding School, Please Try again'});
-    //     }
-    //
-    // },[props.School.success]);
+    console.log("from props",props.userDetails)
+
+    useEffect(()=>{
+        setFormDetails(props.userDetails)
+    },[props.userDetails]);
 
     return (
         <div style={{marginRight: '8px'}}>
@@ -161,8 +162,8 @@ const  UserModal = (props) => {
                                             Username
                                         </Form.Label>
                                         <Col sm="8">
-                                            <Form.Control onBlur={validateFields} value={formDetails.userName} onChange={e=>setFormDetails({...formDetails,admin_username:e.target.value})} id={'userName'}  type="text"/>
-                                            {formErrorState.userName ? <span className={'font-extra-small font-red'}> Please provide a username.</span> : ""}
+                                            <Form.Control onBlur={validateFields} value={formDetails.name} onChange={e=>setFormDetails({...formDetails,name:e.target.value})} id={'name'}  type="text"/>
+                                            {formErrorState.name ? <span className={'font-extra-small font-red'}> Please provide a username.</span> : ""}
                                         </Col>
                                     </Form.Group>
                                     <Form.Group as={Row}>
@@ -180,14 +181,31 @@ const  UserModal = (props) => {
                                             School Name
                                         </Form.Label>
                                         <Col>
-                                            <Form.Control  id={'schoolName'} onBlur={validateFields} onChange={e=>setFormDetails({...formDetails,name:e.target.value})} value={formDetails.name} type="text" required />
-                                            {formErrorState.schoolName ? <span className={'font-extra-small font-red'}>Please provide a school Name.</span> : ""}
+                                            <Form.Control  id={'school_name'} onBlur={validateFields} onChange={e=>setFormDetails({...formDetails,school_name:e.target.value})} value={formDetails.school_name} type="text" required />
+                                            {formErrorState.school_name ? <span className={'font-extra-small font-red'}>Please provide a school Name.</span> : ""}
                                             <Form.Control.Feedback type="invalid">
                                                 Please choose a school name.
                                             </Form.Control.Feedback>
                                         </Col>
                                     </Form.Group>
-
+                                    <Form.Group as={Row}>
+                                        <Form.Label bsPrefix={'font-small'} column sm="4">
+                                            Parent Name
+                                        </Form.Label>
+                                        <Col sm="8">
+                                            <Form.Control onBlur={validateFields} value={formDetails.parent_name} onChange={e=>setFormDetails({...formDetails,parent_name:e.target.value})} id={'parent_name'} type="text"/>
+                                            {formErrorState.parent_name ? <span className={'font-extra-small font-red'}> Please provide Parent name.</span> : ""}
+                                        </Col>
+                                    </Form.Group>
+                                    <Form.Group as={Row}>
+                                        <Form.Label bsPrefix={'font-small'} column sm="4">
+                                            Bus Number
+                                        </Form.Label>
+                                        <Col sm="8">
+                                            <Form.Control onBlur={validateFields} value={formDetails.bus_no} onChange={e=>setFormDetails({...formDetails,bus_no:e.target.value})} id={'bus_no'} type="text"/>
+                                            {formErrorState.bus_no ? <span className={'font-extra-small font-red'}> Please provide bus number.</span> : ""}
+                                        </Col>
+                                    </Form.Group>
 
                                 </Col>
                                 <Col>
@@ -205,10 +223,20 @@ const  UserModal = (props) => {
                                             Driver Contact Number
                                         </Form.Label>
                                         <Col sm="8">
-                                            <Form.Control onBlur={validateFields} value={formDetails.driver_contact_number} onChange={e=>setFormDetails({...formDetails,driver_contact_number:e.target.value})} id={'driver_contact_number'} type="phone"/>
-                                            {formErrorState.driver_contact_number ? <span className={'font-extra-small font-red'}> Please provide 10 digit contact number.</span> : ""}
+                                            <Form.Control onBlur={validateFields} value={formDetails.driver_contact_no} onChange={e=>setFormDetails({...formDetails,driver_contact_no:e.target.value})} id={'driver_contact_no'} type="phone"/>
+                                            {formErrorState.driver_contact_no ? <span className={'font-extra-small font-red'}> Please provide 10 digit contact number.</span> : ""}
                                         </Col>
                                     </Form.Group>
+                                    <Form.Group as={Row}>
+                                        <Form.Label bsPrefix={'font-small'} column sm="4">
+                                            Bus Driver Name
+                                        </Form.Label>
+                                        <Col sm="8">
+                                            <Form.Control onBlur={validateFields} value={formDetails.bus_driver_name} onChange={e=>setFormDetails({...formDetails,bus_driver_name:e.target.value})} id={'bus_driver_name'} type="text"/>
+                                            {formErrorState.driver_contact_number ? <span className={'font-extra-small font-red'}> Please provide bus driver name.</span> : ""}
+                                        </Col>
+                                    </Form.Group>
+
                                     <Form.Group as={Row}>
                                         <Form.Label bsPrefix={'font-small'} column sm="4">
                                             Role Type

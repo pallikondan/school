@@ -26,20 +26,12 @@ class UserDetails extends Component {
     constructor() {
         super();
         this.state={
-        showUserModal : false,
-            modalType:'new',
             userDetails:{}
         }
     }
     componentDidMount() {
         this.props.getMemberRequest()
     }
-
-    handleModalClose = () => {
-        this.setState({showUserModal:false});
-        this.props.history.push('userdetails');
-
-    };
 
     render () {
         const memberKeys = [
@@ -55,8 +47,8 @@ class UserDetails extends Component {
             {
                 key: 'action', columnName: 'Actions', label: 'Actions', render: (value, record) => (
                     <div style={{display: "flex"}}>
-            <UserModal userDetails={record} ></UserModal>
-            <DeleteModal></DeleteModal>
+            <UserModal userDetails={record} />
+            <DeleteModal/>
         </div>
                     
                 ),visible: true, form: false
