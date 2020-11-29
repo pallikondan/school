@@ -31,7 +31,6 @@ const TopNavBar = (props) => {
                     <li style={{display: "inline",borderLeft:"1px solid gray", borderRight:"1px solid gray",borderCollapse:"collapse"}}>
                         <IconButton aria-label="delete">
                             <AccountCircleOutlinedIcon />
-                            <span className={'font-gray font-small'}>{ props.profile.username }</span>
                         </IconButton>
                     </li>
                     <li style={{display: "inline",borderLeft:"1px solid gray", borderRight:"1px solid gray",borderCollapse:"collapse"}}>

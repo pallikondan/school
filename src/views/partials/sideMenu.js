@@ -8,7 +8,6 @@ import {connect} from "react-redux";
 
 
 class SideMenu extends Component {
-
     renderMenuItems =  () => {
         const type =  localStorage.getItem('UserType');
         let adminSideMenuItems, userSideMenuItems, finalmenuItems;
