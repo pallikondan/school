@@ -19,12 +19,15 @@ function *loginSaga(action) {
             action.payload.loginData
         );
 
+        console.log('ress', res);
+
         if(res){
-            action.payload.props.history.push('listschool')
            // yield put(hideLoading());
             yield put(loginSuccess(res));
-            yield setAuthToken(res.data.response.token);
-            localStorage.setItem('UserType', res.data.response.is_staff);
+            yield setAuthToken(res.response.token);
+            window.location.href = "http://localhost:3005/listschool"
+            //action.payload.props.history.push('listschool')
+            localStorage.setItem('UserType', res.response.is_staff);
         }
 
     else{

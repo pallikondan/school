@@ -13,12 +13,16 @@ class SideMenu extends Component {
         const type =  localStorage.getItem('UserType');
         let adminSideMenuItems, userSideMenuItems, finalmenuItems;
         adminSideMenuItems = menuItems.filter(menuItem => menuItem.isAdmin === true);
+        console.log('adminsidemenuItemss', adminSideMenuItems)
         userSideMenuItems = menuItems.filter(menuItem => menuItem.isAdmin === false);
         if(JSON.parse(type)){
-            finalmenuItems = [...adminSideMenuItems, ...userSideMenuItems];
-        } else {
             finalmenuItems = [...userSideMenuItems];
+            console.log('finalmenuItemsss', finalmenuItems)
+        } else {
+            finalmenuItems = [...adminSideMenuItems, ...userSideMenuItems];
         }
+
+        console.log('finalMenuItemmm', finalmenuItems)
 
         return finalmenuItems.map((menuItem, index) => {
                 return <NavLink

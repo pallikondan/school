@@ -1,14 +1,17 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
+import {connect} from 'react-redux';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import deleteIcon from '../../../assets/delete_ic.png';
-import './dashboard.css'
+import './dashboard.css';
+import {deleteUserRequest} from '../../../store/actions/school'
 
-export default function DeleteModal() {
+ function DeleteModal(props) {
+  console.log('modalllll', props)
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -17,6 +20,9 @@ export default function DeleteModal() {
 
   const handleClose = () => {
     setOpen(false);
+    if(Object.keys(props.deleteRecord)) {
+      props.deleteUserRequest({id: props.deleteRecord.id});
+    }
   };
 
   return (
@@ -46,3 +52,5 @@ export default function DeleteModal() {
     </div>
   );
 }
+
+export default  connect(null, {deleteUserRequest})(DeleteModal)

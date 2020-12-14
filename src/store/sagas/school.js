@@ -59,9 +59,15 @@ export  function*  registerMultipleSchool(action) {
 
 
 export  function*  deleteUser(action) {
-    // const { payload } = action;
+    const { payload } = action;
     console.log('from delete sagaaaaa', action)
+
+    const { response, error } =  yield  call(deleteUserAPI, payload);
+
+    console.log('responseeee from deletesaga', response)
+    console.log('errorrrrr', error);
     // try{
+
     //     const { response, error } =  yield  call(deleteUserAPI, payload);
     //     // success trigger here
     //

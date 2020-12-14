@@ -75,6 +75,16 @@ const initialState = {
             case schoolConstants.REGISTER_MULTIPLE_SCHOOL_FAILURE:
                 return {...state};
 
+             
+            case schoolConstants.DELETE_USER_REQUEST:
+                return {...state};
+    
+            case schoolConstants.DELETE_USER_SUCCESS:
+                return {...state};
+    
+            case schoolConstants.DELETE_USER_FAILURE:
+                return {...state};   
+
         default:
             return state
 

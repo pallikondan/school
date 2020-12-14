@@ -2,12 +2,12 @@ import axios from 'axios'
 import { getAuthToken } from "./Auth";
 
 const client = axios.create({
-      baseURL: 'https://civil-envoy-288110.el.r.appspot.com/api/'
+      baseURL: 'http://34.122.28.205:8000/api/'
 });
 
 
 const request = options => {
-  let AUTH_TOKEN = '22d6b2bc272b509b3a9ac4873e0f59089bb3aadc';
+  let AUTH_TOKEN = 'cf20acecdfca33402fcf399614e2f39cda07224b';
   if (AUTH_TOKEN) {
     //const { token } = getStorage('artworkAuth');
     client.defaults.headers.common['authorization'] = `Token ${AUTH_TOKEN}`;
