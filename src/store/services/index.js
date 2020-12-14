@@ -27,7 +27,8 @@ export const loginAPI = data => {
         headers: {
             'Content-Type': 'multipart/form-data'
         }
-    })
+    }).then(response => { console.log('responseeeee', response); return response.data})
+    .catch(({ data }) => ({ error: data }));
 
 };
 
@@ -55,8 +56,8 @@ export const registerMultipleSchoolAPI = data => {
 
 export const deleteUserAPI = data => {
     return request({
-        url: 'user/',
-        method: 'delete',
+        url: 'user/deactivate/',
+        method: 'post',
         data,
         headers: {
             'Content-Type': 'application/json'

@@ -11,6 +11,7 @@ import EditIcon from '../../../assets/edit_ic.png'
 
 
 const  SchoolModal = (props) => {
+    console.log('propsss schollmodalll', props)
     const [show, setShow] = useState(false);
     const [modalType, setModalType] = useState('');
     const [logo, setLogo] = useState('');
@@ -131,6 +132,10 @@ const  SchoolModal = (props) => {
         //reader.readAsText(file);
         setbulkFile(file);
     };
+
+    useEffect(() => {
+        setFormDetails(props.schollDetails)
+    }, [props.schollDetails])
 
     // useEffect(()=>{
     //     if(props.School.success){

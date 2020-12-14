@@ -24,12 +24,13 @@ const  inititalState= {
 
             };
         case login.LOGIN_SUCCESS:
+            console.log('actionnnnn.payloaddd', action.payload);
             return state = {
                     ...state,
                     success: true,
                     isAuthorized: true,
-                    isStaff:action.payload.data.response.is_staff,
-                    profile:action.payload.data.response
+                    isStaff:action.payload.response.is_staff,
+                    profile:action.payload.response
 
             };
         case login.LOGIN_ERROR:

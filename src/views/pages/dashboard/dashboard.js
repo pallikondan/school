@@ -53,7 +53,7 @@ class DashboardPage extends Component {
                 return(
                     <div style={{display: "flex"}}>
                         <EditModal schollDetails={record}></EditModal>
-                        <DeleteModal></DeleteModal>
+                        <DeleteModal deleteRecord={record}></DeleteModal>
                     </div>      
                 )
             }, visible: true, form: false
